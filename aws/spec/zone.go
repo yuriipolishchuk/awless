@@ -18,9 +18,9 @@ import (
 	awssdk "github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/route53"
 	"github.com/aws/aws-sdk-go/service/route53/route53iface"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/template/params"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/template/params"
 )
 
 type CreateZone struct {

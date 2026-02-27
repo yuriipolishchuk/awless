@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/template/env"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/template/env"
 )
 
 type Runner struct {
@@ -66,7 +66,7 @@ func (ru *Runner) Run() error {
 		case *Errors:
 			errs, _ := t.Errors()
 			for _, e := range errs {
-				logger.Errorf(e.Error())
+				logger.Errorf("%s", e.Error())
 			}
 		default:
 			logger.Error(err)

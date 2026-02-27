@@ -10,7 +10,7 @@ import (
 
 	awssdk "github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/wallix/awless/aws/doc"
+	"github.com/yuriipolishchuk/awless/aws/doc"
 )
 
 // Image resolving allows to find AWS AMIs identifiers specifying what you want instead

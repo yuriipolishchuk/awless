@@ -5,10 +5,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/template"
-	"github.com/wallix/awless/template/env"
-	"github.com/wallix/awless/template/internal/ast"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/template"
+	"github.com/yuriipolishchuk/awless/template/env"
+	"github.com/yuriipolishchuk/awless/template/internal/ast"
 )
 
 func TestDryRun(t *testing.T) {

@@ -2590,9 +2590,6 @@ type cloudfrontMock struct {
 	DeleteDistributionFunc                                 func(param0 *cloudfront.DeleteDistributionInput) (*cloudfront.DeleteDistributionOutput, error)
 	DeleteDistributionRequestFunc                          func(param0 *cloudfront.DeleteDistributionInput) (*request.Request, *cloudfront.DeleteDistributionOutput)
 	DeleteDistributionWithContextFunc                      func(param0 aws.Context, param1 *cloudfront.DeleteDistributionInput, param2 ...request.Option) (*cloudfront.DeleteDistributionOutput, error)
-	DeleteServiceLinkedRoleFunc                            func(param0 *cloudfront.DeleteServiceLinkedRoleInput) (*cloudfront.DeleteServiceLinkedRoleOutput, error)
-	DeleteServiceLinkedRoleRequestFunc                     func(param0 *cloudfront.DeleteServiceLinkedRoleInput) (*request.Request, *cloudfront.DeleteServiceLinkedRoleOutput)
-	DeleteServiceLinkedRoleWithContextFunc                 func(param0 aws.Context, param1 *cloudfront.DeleteServiceLinkedRoleInput, param2 ...request.Option) (*cloudfront.DeleteServiceLinkedRoleOutput, error)
 	DeleteStreamingDistributionFunc                        func(param0 *cloudfront.DeleteStreamingDistributionInput) (*cloudfront.DeleteStreamingDistributionOutput, error)
 	DeleteStreamingDistributionRequestFunc                 func(param0 *cloudfront.DeleteStreamingDistributionInput) (*request.Request, *cloudfront.DeleteStreamingDistributionOutput)
 	DeleteStreamingDistributionWithContextFunc             func(param0 aws.Context, param1 *cloudfront.DeleteStreamingDistributionInput, param2 ...request.Option) (*cloudfront.DeleteStreamingDistributionOutput, error)
@@ -2800,24 +2797,6 @@ func (m *cloudfrontMock) DeleteDistributionWithContext(param0 aws.Context, param
 	m.addCall("DeleteDistributionWithContext")
 	m.verifyInput("DeleteDistributionWithContext", param0)
 	return m.DeleteDistributionWithContextFunc(param0, param1, param2...)
-}
-
-func (m *cloudfrontMock) DeleteServiceLinkedRole(param0 *cloudfront.DeleteServiceLinkedRoleInput) (*cloudfront.DeleteServiceLinkedRoleOutput, error) {
-	m.addCall("DeleteServiceLinkedRole")
-	m.verifyInput("DeleteServiceLinkedRole", param0)
-	return m.DeleteServiceLinkedRoleFunc(param0)
-}
-
-func (m *cloudfrontMock) DeleteServiceLinkedRoleRequest(param0 *cloudfront.DeleteServiceLinkedRoleInput) (*request.Request, *cloudfront.DeleteServiceLinkedRoleOutput) {
-	m.addCall("DeleteServiceLinkedRoleRequest")
-	m.verifyInput("DeleteServiceLinkedRoleRequest", param0)
-	return m.DeleteServiceLinkedRoleRequestFunc(param0)
-}
-
-func (m *cloudfrontMock) DeleteServiceLinkedRoleWithContext(param0 aws.Context, param1 *cloudfront.DeleteServiceLinkedRoleInput, param2 ...request.Option) (*cloudfront.DeleteServiceLinkedRoleOutput, error) {
-	m.addCall("DeleteServiceLinkedRoleWithContext")
-	m.verifyInput("DeleteServiceLinkedRoleWithContext", param0)
-	return m.DeleteServiceLinkedRoleWithContextFunc(param0, param1, param2...)
 }
 
 func (m *cloudfrontMock) DeleteStreamingDistribution(param0 *cloudfront.DeleteStreamingDistributionInput) (*cloudfront.DeleteStreamingDistributionOutput, error) {

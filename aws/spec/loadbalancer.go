@@ -23,10 +23,10 @@ import (
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/elbv2"
 	"github.com/aws/aws-sdk-go/service/elbv2/elbv2iface"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/template/env"
-	"github.com/wallix/awless/template/params"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/template/env"
+	"github.com/yuriipolishchuk/awless/template/params"
 )
 
 type CreateLoadbalancer struct {

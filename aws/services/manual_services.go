@@ -23,7 +23,7 @@ import (
 
 	awssdk "github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/iam"
-	"github.com/wallix/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud"
 )
 
 func GetCloudServicesForAPIs(apis ...string) (services []cloud.Service) {

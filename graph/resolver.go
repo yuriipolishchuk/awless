@@ -3,8 +3,8 @@ package graph
 import (
 	"fmt"
 
-	"github.com/wallix/awless/cloud/properties"
-	"github.com/wallix/awless/cloud/rdf"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/cloud/rdf"
 	tstore "github.com/wallix/triplestore"
 )
 

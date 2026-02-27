@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/wallix/awless/console"
+	"github.com/yuriipolishchuk/awless/console"
 )
 
 var DefaultNetworkMonitor = &NetworkMonitor{requests: make(map[*request.Request]*req)}

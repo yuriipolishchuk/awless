@@ -8,7 +8,7 @@ import (
 
 	awssdk "github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/autoscaling"
-	"github.com/wallix/awless/aws/services"
+	"github.com/yuriipolishchuk/awless/aws/services"
 )
 
 type scalingActivitiesTailer struct {

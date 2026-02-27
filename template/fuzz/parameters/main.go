@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/template"
-	"github.com/wallix/awless/template/env"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/template"
+	"github.com/yuriipolishchuk/awless/template/env"
 )
 
 func Fuzz(data []byte) int {

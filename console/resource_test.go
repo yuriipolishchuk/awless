@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/wallix/awless/graph"
-	"github.com/wallix/awless/graph/resourcetest"
+	"github.com/yuriipolishchuk/awless/graph"
+	"github.com/yuriipolishchuk/awless/graph/resourcetest"
 )
 
 func TestResourceDisplay(t *testing.T) {

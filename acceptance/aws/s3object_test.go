@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 
 	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/wallix/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/aws/spec"
 )
 
 func TestS3object(t *testing.T) {

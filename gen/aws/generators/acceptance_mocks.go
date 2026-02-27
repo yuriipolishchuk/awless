@@ -13,7 +13,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/wallix/awless/gen/aws"
+	"github.com/yuriipolishchuk/awless/gen/aws"
 )
 
 var AWS_SDK_PATH = filepath.Join(ROOT_DIR, "vendor", "github.com", "aws", "aws-sdk-go")
@@ -208,7 +208,7 @@ limitations under the License.
 package awsat
 
 import (
-  "github.com/wallix/awless/aws/spec"
+  "github.com/yuriipolishchuk/awless/aws/spec"
 )
 
 type AcceptanceFactory struct {

@@ -60,9 +60,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/sns/snsiface"
 	"github.com/aws/aws-sdk-go/service/sqs"
 	"github.com/aws/aws-sdk-go/service/sqs/sqsiface"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/template/env"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/template/env"
 )
 
 func NewAttachAlarm(sess *session.Session, g cloud.GraphAPI, l ...*logger.Logger) *AttachAlarm {

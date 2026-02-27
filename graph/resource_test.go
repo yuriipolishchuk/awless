@@ -26,8 +26,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
 )
 
 func TestEqualResources(t *testing.T) {

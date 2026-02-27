@@ -19,14 +19,14 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/template/env"
-	"github.com/wallix/awless/template/params"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/template/env"
+	"github.com/yuriipolishchuk/awless/template/params"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/cloudwatch"
 	"github.com/aws/aws-sdk-go/service/cloudwatch/cloudwatchiface"
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 type CreateAlarm struct {

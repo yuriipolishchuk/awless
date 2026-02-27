@@ -24,9 +24,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/template/env"
-	"github.com/wallix/awless/template/params"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/template/env"
+	"github.com/yuriipolishchuk/awless/template/params"
 
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/aws/aws-sdk-go/service/iam/iamiface"
@@ -34,8 +34,8 @@ import (
 	"github.com/boombuler/barcode/qr"
 	"github.com/chzyer/readline"
 	"github.com/fatih/color"
-	"github.com/wallix/awless/aws/config"
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/aws/config"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 type CreateMfadevice struct {
@@ -192,7 +192,7 @@ func displayQRCode(w io.Writer, qrCode barcode.Barcode) {
 }
 
 func promptStringWithDefault(msg, def string) (res string) {
-	fmt.Fprintf(os.Stderr, msg)
+	fmt.Fprintf(os.Stderr, "%s", msg)
 	fmt.Scanln(&res)
 	res = strings.TrimSpace(res)
 	if res == "" {

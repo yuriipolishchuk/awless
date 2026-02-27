@@ -111,11 +111,11 @@ func StdinInstanceTypeSelector() string {
 }
 
 func IsValidRegion(given string) bool {
-	reg, _ := regexp.Compile("^(us|eu|ap|sa|ca)\\-\\w+\\-\\d+$")
-	regChina, _ := regexp.Compile("^cn\\-\\w+\\-\\d+$")
-	regUsGov, _ := regexp.Compile("^us\\-gov\\-\\w+\\-\\d+$")
-
-	return reg.MatchString(given) || regChina.MatchString(given) || regUsGov.MatchString(given)
+	// Match all known AWS region patterns including standard, China, GovCloud, and ISO partitions
+	reg, _ := regexp.Compile("^(us|eu|ap|sa|ca|af|me|il|cn)\\-[a-z]+\\-\\d+$")
+	regGov, _ := regexp.Compile("^us\\-gov\\-[a-z]+\\-\\d+$")
+	regIso, _ := regexp.Compile("^(us\\-iso|us\\-isob|eu\\-isoe)\\-[a-z]+\\-\\d+$")
+	return reg.MatchString(given) || regGov.MatchString(given) || regIso.MatchString(given)
 }
 
 func isValidInstanceType(given string) bool {

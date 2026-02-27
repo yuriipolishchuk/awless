@@ -26,8 +26,8 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/spf13/cobra"
-	"github.com/wallix/awless/aws/services"
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/aws/services"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 var onlyMyIPFlag, onlyMyNameFlag, onlyMyTypeFlag, onlyMyIDFlag, onlyMyAccountFlag, onlyMyResourcePathFlag bool
@@ -67,7 +67,7 @@ var whoamiCmd = &cobra.Command{
 		if me.IsRoot() {
 			logger.Warning("You are currently root")
 			logger.Warning("Best practices suggest to create a new user and affecting it roles of access")
-			logger.Warning("awless official templates might help https://github.com/wallix/awless-templates\n")
+			logger.Warning("awless official templates might help https://github.com/yuriipolishchuk/awless-templates\n")
 		}
 
 		switch {

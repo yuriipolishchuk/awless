@@ -24,7 +24,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/wallix/awless/cloud/rdf"
+	"github.com/yuriipolishchuk/awless/cloud/rdf"
 	tstore "github.com/wallix/triplestore"
 )
 

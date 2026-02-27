@@ -22,9 +22,9 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	p "github.com/wallix/awless/cloud/properties"
-	"github.com/wallix/awless/graph"
-	"github.com/wallix/awless/graph/resourcetest"
+	p "github.com/yuriipolishchuk/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/graph"
+	"github.com/yuriipolishchuk/awless/graph/resourcetest"
 )
 
 func init() {
@@ -484,17 +484,18 @@ func TestMaxWidth(t *testing.T) {
 		WithMaxWidth(45),
 	).SetSource(g).Build()
 
-	expected = `|  ID  | NAME | STATE ▲ | TYPE | PUBLIC IP |
-|------|------|------|------|------|
-| inst | apac | runn | t2.  |      |
-| _3   | he   | ing  | xlar |      |
-|      |      |      | ge   |      |
-| inst | redi | runn | t2.  | 1.2. |
-| _1   | s    | ing  | micr | 3.4  |
-|      |      |      | o    |      |
-| inst | djan | stop | t2.  |      |
-| _2   | go   | ped  | medi |      |
-|      |      |      | um   |      |
+	expected = `|  ID  | NAME | STATE | TYPE | PUBLIC |
+|      |      |   ▲   |      |   IP   |
+|------|------|-------|------|--------|
+| inst | apac | runn  | t2.  |        |
+| _3   | he   | ing   | xlar |        |
+|      |      |       | ge   |        |
+| inst | redi | runn  | t2.  | 1.2.   |
+| _1   | s    | ing   | micr | 3.4    |
+|      |      |       | o    |        |
+| inst | djan | stop  | t2.  |        |
+| _2   | go   | ped   | medi |        |
+|      |      |       | um   |        |
 `
 	w.Reset()
 	if err := displayer.Print(&w); err != nil {
@@ -511,7 +512,8 @@ func TestMaxWidth(t *testing.T) {
 		WithMaxWidth(70),
 	).SetSource(g).Build()
 
-	expected = `|   ID   |  NAME  | STATE ▲ |   TYPE    | PUBLIC IP |
+	expected = `|   ID   |  NAME  |  STATE  |   TYPE    | PUBLIC  |
+|        |        |    ▲    |           |   IP    |
 |--------|--------|---------|-----------|---------|
 | inst_3 | apache | running | t2.xlarge |         |
 | inst_1 | redis  | running | t2.micro  | 1.2.3.4 |

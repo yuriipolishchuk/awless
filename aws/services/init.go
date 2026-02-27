@@ -19,11 +19,11 @@ package awsservices
 import (
 	"errors"
 
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/graph"
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/sync"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/graph"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/sync"
 )
 
 var (

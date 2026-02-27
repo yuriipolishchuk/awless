@@ -29,8 +29,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/ec2metadata"
 	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/wallix/awless/aws/config"
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/aws/config"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 func ResolveRegionFromEnv() (region string) {

@@ -16,7 +16,7 @@ limitations under the License.
 
 package main
 
-import "github.com/wallix/awless/commands"
+import "github.com/yuriipolishchuk/awless/commands"
 
 func main() {
 	commands.RootCmd.Execute()

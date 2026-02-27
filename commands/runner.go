@@ -5,15 +5,15 @@ import (
 	"os"
 	"strings"
 
-	"github.com/wallix/awless/aws/services"
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/config"
-	"github.com/wallix/awless/database"
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/sync"
-	"github.com/wallix/awless/template"
-	"github.com/wallix/awless/template/env"
+	"github.com/yuriipolishchuk/awless/aws/services"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/config"
+	"github.com/yuriipolishchuk/awless/database"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/sync"
+	"github.com/yuriipolishchuk/awless/template"
+	"github.com/yuriipolishchuk/awless/template/env"
 )
 
 func NewRunnerRequiredParamsOnly(tpl *template.Template, msg, tplPath string, fillers ...map[string]interface{}) *template.Runner {

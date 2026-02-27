@@ -21,7 +21,7 @@ import (
 	"io"
 
 	"github.com/olekukonko/tablewriter"
-	"github.com/wallix/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud"
 )
 
 type tableResourceDisplayer struct {

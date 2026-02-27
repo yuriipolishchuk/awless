@@ -20,8 +20,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
 )
 
 func TestGetColumnsDefinitions(t *testing.T) {

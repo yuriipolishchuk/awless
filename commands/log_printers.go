@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	"github.com/wallix/awless/console"
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/template"
+	"github.com/yuriipolishchuk/awless/console"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/template"
 )
 
 type logPrinter interface {

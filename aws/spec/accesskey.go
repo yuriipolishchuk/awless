@@ -23,18 +23,18 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/wallix/awless/cloud/match"
-	"github.com/wallix/awless/template/env"
-	"github.com/wallix/awless/template/params"
+	"github.com/yuriipolishchuk/awless/cloud/match"
+	"github.com/yuriipolishchuk/awless/template/env"
+	"github.com/yuriipolishchuk/awless/template/params"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/aws/aws-sdk-go/service/iam/iamiface"
-	"github.com/wallix/awless/aws/config"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/cloud/properties"
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/aws/config"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 type CreateAccesskey struct {
@@ -238,7 +238,7 @@ func appendToAwsFile(content string, awsFilePath string) (bool, error) {
 		return created, fmt.Errorf("appending to '%s': %s", awsFilePath, err)
 	}
 
-	if _, err := fmt.Fprintf(f, content); err != nil {
+	if _, err := fmt.Fprintf(f, "%s", content); err != nil {
 		return created, err
 	}
 

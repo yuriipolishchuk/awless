@@ -18,8 +18,8 @@ package match
 import (
 	"testing"
 
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/graph/resourcetest"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/graph/resourcetest"
 )
 
 func TestMatchers(t *testing.T) {

@@ -16,12 +16,12 @@ import (
 	"github.com/aws/aws-sdk-go/service/route53"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/sqs"
-	"github.com/wallix/awless/aws/conv"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/cloud/properties"
-	"github.com/wallix/awless/cloud/rdf"
-	"github.com/wallix/awless/fetch"
-	"github.com/wallix/awless/graph"
+	"github.com/yuriipolishchuk/awless/aws/conv"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/cloud/rdf"
+	"github.com/yuriipolishchuk/awless/fetch"
+	"github.com/yuriipolishchuk/awless/graph"
 )
 
 func addManualInfraFetchFuncs(conf *Config, funcs map[string]fetch.Func) {
@@ -263,7 +263,7 @@ func addManualInfraFetchFuncs(conf *Config, funcs map[string]fetch.Func) {
 		}
 
 		if len(errors) > 0 {
-			err = fmt.Errorf(strings.Join(errors, "; "))
+			err = fmt.Errorf("%s", strings.Join(errors, "; "))
 		}
 
 		return resources, objects, err

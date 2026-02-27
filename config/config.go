@@ -8,9 +8,9 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/wallix/awless/aws/config"
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/database"
+	"github.com/yuriipolishchuk/awless/aws/config"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/database"
 )
 
 var (
@@ -50,7 +50,7 @@ var configDefinitions = map[string]*Definition{
 	"aws.cdn.sync":                 {help: "Enable/disable sync of CloudFront service (when empty: true)", defaultValue: "true", parseParamFn: parseBool},
 	"aws.cloudformation.sync":      {help: "Enable/disable sync of CloudFormation service (when empty: true)", defaultValue: "true", parseParamFn: parseBool},
 	checkUpgradeFrequencyConfigKey: {help: "Upgrade check frequency (hours); a negative value disables check", defaultValue: "8", parseParamFn: parseInt},
-	schedulerURL:                   {help: "URL used by awless CLI to interact with pre-installed https://github.com/wallix/awless-scheduler", defaultValue: "http://localhost:8082"},
+	schedulerURL:                   {help: "URL used by awless CLI to interact with pre-installed https://github.com/yuriipolishchuk/awless-scheduler", defaultValue: "http://localhost:8082"},
 }
 
 var defaultsDefinitions = map[string]*Definition{

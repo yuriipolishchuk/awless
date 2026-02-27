@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/oklog/ulid"
-	"github.com/wallix/awless/template/internal/ast"
+	"github.com/yuriipolishchuk/awless/template/internal/ast"
 )
 
 // Allow template executions serialization with context for JSON storage

@@ -11,7 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/aws/aws-sdk-go/service/configservice"
 	"github.com/fatih/color"
-	"github.com/wallix/awless/aws/services"
+	"github.com/yuriipolishchuk/awless/aws/services"
 )
 
 const (
@@ -143,7 +143,7 @@ func (t *stackEventTailer) Tail(w io.Writer) error {
 					t.deploymentStatus.failedEvents.printReverse(errTab, f)
 					errTab.Flush()
 
-					return fmt.Errorf(errBuf.String())
+					return fmt.Errorf("%s", errBuf.String())
 				}
 				return nil
 			}
@@ -330,7 +330,7 @@ func (f filters) header() []byte {
 
 	// with "\n" formatted with bold, tabwriter somehow shift lines
 	// so we need to add "\n" after string being bolded
-	return []byte(color.New(color.Bold).Sprintf(buf.String()) + "\n")
+	return []byte(color.New(color.Bold).Sprintf("%s", buf.String()) + "\n")
 }
 
 func (e *stackEvent) filter(filters []string) (out []byte) {

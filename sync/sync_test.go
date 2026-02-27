@@ -5,13 +5,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/wallix/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud"
 
 	"io/ioutil"
 
 	"path/filepath"
 
-	"github.com/wallix/awless/graph"
+	"github.com/yuriipolishchuk/awless/graph"
 )
 
 func TestSyncTripleFiles(t *testing.T) {

@@ -37,18 +37,17 @@ import (
 
 	"github.com/chzyer/readline"
 	"github.com/spf13/cobra"
-	"github.com/wallix/awless-scheduler/client"
-	"github.com/wallix/awless/aws/doc"
-	"github.com/wallix/awless/aws/services"
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/cloud/match"
-	"github.com/wallix/awless/cloud/properties"
-	"github.com/wallix/awless/config"
-	"github.com/wallix/awless/logger"
-	"github.com/wallix/awless/sync"
-	"github.com/wallix/awless/template"
-	"github.com/wallix/awless/template/params"
+	"github.com/yuriipolishchuk/awless/aws/doc"
+	"github.com/yuriipolishchuk/awless/aws/services"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud/match"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/config"
+	"github.com/yuriipolishchuk/awless/logger"
+	"github.com/yuriipolishchuk/awless/sync"
+	"github.com/yuriipolishchuk/awless/template"
+	"github.com/yuriipolishchuk/awless/template/params"
 )
 
 var (
@@ -62,7 +61,7 @@ var (
 
 func init() {
 	RootCmd.AddCommand(runCmd)
-	runCmd.Flags().BoolVar(&listRemoteTemplatesFlag, "list", false, "List templates available at https://github.com/wallix/awless-templates")
+	runCmd.Flags().BoolVar(&listRemoteTemplatesFlag, "list", false, "List templates available at https://github.com/yuriipolishchuk/awless-templates")
 	runCmd.Flags().StringVar(&scheduleRunInFlag, "run-in", "", "Postpone the execution of this template")
 	runCmd.Flags().StringVar(&scheduleRevertInFlag, "revert-in", "", "Schedule the revertion of this template")
 	runCmd.Flags().StringVarP(&runLogMessage, "message", "m", "", "Add a message for this template execution to be persisted in your logs")
@@ -371,7 +370,7 @@ func runSyncFor(tplExec *template.TemplateExecution) {
 		}()
 	}
 	if _, err := sync.DefaultSyncer.Sync(services...); err != nil {
-		logger.ExtraVerbosef(err.Error())
+		logger.ExtraVerbosef("%s", err.Error())
 	}
 }
 
@@ -597,24 +596,7 @@ func isCSV(s string) bool {
 }
 
 func scheduleTemplate(t *template.Template, runIn, revertIn string) error {
-	schedClient, err := client.New(config.GetSchedulerURL())
-	if err != nil {
-		return fmt.Errorf("cannot connect to scheduler: %s", err)
-	}
-	logger.Verbosef("sending template to scheduler %s", schedClient.ServiceURL)
-
-	if err := schedClient.Post(client.Form{
-		Region:   config.GetAWSRegion(),
-		RunIn:    runIn,
-		RevertIn: revertIn,
-		Template: t.String(),
-	}); err != nil {
-		return fmt.Errorf("cannot schedule template: %s", err)
-	}
-
-	logger.Info("template scheduled successfully")
-
-	return nil
+	return fmt.Errorf("scheduler support has been removed")
 }
 
 func suggestFixParsingError(def awsspec.Definition, args []string, matchingProperty string, defaultErr error) (*template.Template, error) {

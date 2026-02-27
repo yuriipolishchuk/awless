@@ -7,11 +7,11 @@ import (
 	"testing"
 
 	"github.com/aws/aws-sdk-go/service/iam"
-	"github.com/wallix/awless/aws/config"
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/cloud/properties"
-	"github.com/wallix/awless/graph"
-	"github.com/wallix/awless/graph/resourcetest"
+	"github.com/yuriipolishchuk/awless/aws/config"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
+	"github.com/yuriipolishchuk/awless/graph"
+	"github.com/yuriipolishchuk/awless/graph/resourcetest"
 )
 
 func TestAccesskey(t *testing.T) {

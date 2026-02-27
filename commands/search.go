@@ -23,9 +23,9 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/wallix/awless/aws/spec"
-	"github.com/wallix/awless/config"
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/config"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 var (

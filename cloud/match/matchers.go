@@ -21,7 +21,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/wallix/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud"
 )
 
 type and struct {

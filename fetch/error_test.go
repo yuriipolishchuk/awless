@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/wallix/awless/fetch"
+	"github.com/yuriipolishchuk/awless/fetch"
 )
 
 func TestAddError(t *testing.T) {

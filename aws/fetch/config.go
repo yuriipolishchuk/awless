@@ -23,7 +23,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/sqs/sqsiface"
 	"github.com/aws/aws-sdk-go/service/sts/stsiface"
 
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 type AWSAPI struct {

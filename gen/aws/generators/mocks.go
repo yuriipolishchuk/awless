@@ -20,7 +20,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/wallix/awless/gen/aws"
+	"github.com/yuriipolishchuk/awless/gen/aws"
 )
 
 func generateTestMocks() {

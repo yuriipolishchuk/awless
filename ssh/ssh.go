@@ -17,7 +17,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/logger"
 
 	gossh "golang.org/x/crypto/ssh"
 	"golang.org/x/crypto/ssh/knownhosts"

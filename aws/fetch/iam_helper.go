@@ -7,7 +7,7 @@ import (
 	awssdk "github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/aws/aws-sdk-go/service/iam/iamiface"
-	"github.com/wallix/awless/fetch"
+	"github.com/yuriipolishchuk/awless/fetch"
 )
 
 type AccountAuthorizationDetails struct {

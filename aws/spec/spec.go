@@ -9,12 +9,12 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/wallix/awless/template/env"
-	"github.com/wallix/awless/template/params"
+	"github.com/yuriipolishchuk/awless/template/env"
+	"github.com/yuriipolishchuk/awless/template/params"
 
 	"github.com/fatih/color"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/logger"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/logger"
 )
 
 const (

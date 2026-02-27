@@ -7,7 +7,7 @@ import (
 	awssdk "github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/ecs"
 	"github.com/aws/aws-sdk-go/service/ecs/ecsiface"
-	"github.com/wallix/awless/fetch"
+	"github.com/yuriipolishchuk/awless/fetch"
 )
 
 func getClusterArns(ctx context.Context, cache fetch.Cache, api ecsiface.ECSAPI) ([]string, error) {

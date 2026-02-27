@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wallix/awless/graph"
+	"github.com/yuriipolishchuk/awless/graph"
 
 	git "gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"

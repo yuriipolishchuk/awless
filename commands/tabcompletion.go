@@ -7,10 +7,10 @@ import (
 	"unicode"
 
 	"github.com/chzyer/readline"
-	"github.com/wallix/awless/aws/services"
-	"github.com/wallix/awless/cloud"
-	"github.com/wallix/awless/graph"
-	"github.com/wallix/awless/template"
+	"github.com/yuriipolishchuk/awless/aws/services"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/graph"
+	"github.com/yuriipolishchuk/awless/template"
 )
 
 func enumCompletionFunc(enum []string) readline.AutoCompleter {

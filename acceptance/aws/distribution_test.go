@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/cloudfront"
-	"github.com/wallix/awless/aws/spec"
+	"github.com/yuriipolishchuk/awless/aws/spec"
 )
 
 func TestDistribution(t *testing.T) {
