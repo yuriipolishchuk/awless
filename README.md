@@ -1,11 +1,8 @@
-
-
-[![Build Status](https://api.travis-ci.org/wallix/awless.svg?branch=master)](https://travis-ci.org/wallix/awless)
-[![Go Report Card](https://goreportcard.com/badge/github.com/wallix/awless)](https://goreportcard.com/report/github.com/wallix/awless)
+> **This is a fork of [wallix/awless](https://github.com/wallix/awless)**, a beloved AWS CLI tool that was last updated in December 2018. The original project gathered nearly 5,000 stars but has been abandoned since. This fork modernizes awless so it can continue to be useful — updated to Go 1.26, latest AWS SDK, and support for all current AWS regions. I am not the original author and do not promise any features, bug fixes, or ongoing maintenance.
 
 <img src="https://user-images.githubusercontent.com/808274/33351381-5b9a0d00-d458-11e7-91ed-cf7ada7237c1.png" alt="terminal icon" width="48"> `awless` is a powerful, innovative and small surface command line interface (CLI) to manage Amazon Web Services.
 
-[Twitter](http://twitter.com/awlessCLI) | [Wiki](https://github.com/wallix/awless/wiki) | [Changelog](https://github.com/wallix/awless/blob/master/CHANGELOG.md#readme)
+[Original Repo](https://github.com/wallix/awless) | [Wiki](https://github.com/wallix/awless/wiki) | [Changelog](https://github.com/yuriipolishchuk/awless/blob/master/CHANGELOG.md#readme)
 
 # Why awless
 
@@ -26,10 +23,8 @@ For more read our [FAQ](#faq) below (how `awless` compares to other tools, etc.)
 
 Choose one of the following options:
 
-1. On macOS, use [homebrew](http://brew.sh):  `brew tap wallix/awless; brew install awless`
-2. With `curl` (macOS/Linux), run: `curl https://raw.githubusercontent.com/wallix/awless/master/getawless.sh | bash`
-3. Download the latest `awless` binaries (Windows/Linux/macOS) [from Github](https://github.com/wallix/awless/releases/latest)
-4. If you have Golang already installed, install from the source with: `go get -u github.com/wallix/awless`
+1. Download the latest `awless` binaries (Windows/Linux/macOS) [from Github](https://github.com/yuriipolishchuk/awless/releases/latest)
+2. If you have Golang already installed, install from the source with: `go install github.com/yuriipolishchuk/awless@latest`
 
 If you have previously used the AWS CLI or aws-shell, you don't need to configure anything! Your config will be automatically loaded (i.e. ~/.aws/{credentials,config}) and `awless` will prompt for any missing info (more at our [getting started](https://github.com/wallix/awless/wiki/Getting-Started)).
 
