@@ -1,3 +1,15 @@
+## v0.2.3 [2026-02-27]
+
+### Features
+
+- Add EKS cluster listing: `awless list eksclusters` (alias: `awless list eks`) with Name, State, Version, Platform, VPC, Endpoint, Created columns
+- Top-level resource shortcuts: `awless instances` now works the same as `awless list instances` (all resource types)
+- Add `--region` as alias for `--aws-region` flag
+
+### Security
+
+- Migrate from abandoned `gopkg.in/src-d/go-git.v4` to `github.com/go-git/go-git/v5`, fixing CVE-2023-49569, CVE-2025-21613 (CRITICAL), CVE-2023-49568, CVE-2025-21614 (HIGH)
+
 ## v0.2.2 [2026-02-27]
 
 ### Fixes

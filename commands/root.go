@@ -56,6 +56,10 @@ func init() {
 	RootCmd.PersistentFlags().BoolVar(&networkMonitorFlag, "network-monitor", false, "Debug requests with network monitor")
 	RootCmd.PersistentFlags().MarkHidden("network-monitor")
 
+	// Allow --region as shorthand for --aws-region
+	RootCmd.PersistentFlags().StringVar(&awsRegionGlobalFlag, "region", "", "Alias for --aws-region")
+	RootCmd.PersistentFlags().MarkHidden("region")
+
 	RootCmd.Flags().BoolVar(&versionGlobalFlag, "version", false, "Print awless version")
 
 	cobra.AddTemplateFunc("IsCmdAnnotatedOneliner", IsCmdAnnotatedOneliner)

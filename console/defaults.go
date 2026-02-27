@@ -52,6 +52,7 @@ var ColumnsInListing = map[string][]string{
 	cloud.ContainerTask:       {properties.Name, properties.Version, properties.State, properties.ContainersImages, properties.Deployments},
 	cloud.Container:           {properties.Name, properties.DeploymentName, properties.State, properties.Created, properties.Launched, properties.Stopped, properties.Cluster, properties.ContainerTask},
 	cloud.ContainerInstance:   {properties.ID, properties.Instance, properties.Cluster, properties.State, properties.RunningTasksCount, properties.PendingTasksCount, properties.Created, properties.AgentConnected},
+	cloud.EKSCluster:          {properties.Name, properties.State, properties.Version, properties.PlatformVersion, properties.Vpc, properties.Endpoint, properties.Created},
 	cloud.Certificate:         {properties.Arn, properties.Name},
 	cloud.User:                {properties.ID, properties.Name, properties.PasswordLastUsed, properties.Created},
 	cloud.Role:                {properties.ID, properties.Name, properties.Created},
@@ -345,6 +346,19 @@ var DefaultsColumnDefinitions = map[string][]ColumnDefinition{
 		StringColumnDefinition{Prop: properties.PendingTasksCount, Friendly: "PendingTasks"},
 		TimeColumnDefinition{StringColumnDefinition: StringColumnDefinition{Prop: properties.Created}},
 		StringColumnDefinition{Prop: properties.AgentConnected},
+	},
+	//EKS
+	cloud.EKSCluster: {
+		StringColumnDefinition{Prop: properties.Name},
+		ColoredValueColumnDefinition{
+			StringColumnDefinition: StringColumnDefinition{Prop: properties.State},
+			ColoredValues:          map[string]color.Attribute{"ACTIVE": color.FgGreen, "CREATING": color.FgYellow, "DELETING": color.FgRed, "FAILED": color.FgRed},
+		},
+		StringColumnDefinition{Prop: properties.Version},
+		StringColumnDefinition{Prop: properties.PlatformVersion, Friendly: "Platform"},
+		StringColumnDefinition{Prop: properties.Vpc},
+		StringColumnDefinition{Prop: properties.Endpoint},
+		TimeColumnDefinition{StringColumnDefinition: StringColumnDefinition{Prop: properties.Created}},
 	},
 	//ACM
 	cloud.Certificate: {

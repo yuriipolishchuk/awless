@@ -75,6 +75,26 @@ func init() {
 	listCmd.PersistentFlags().BoolVar(&noHeadersFlag, "no-headers", false, "Do not display headers")
 	listCmd.PersistentFlags().BoolVar(&reverseFlag, "reverse", false, "Use in conjunction with --sort to reverse sort")
 	listCmd.PersistentFlags().StringSliceVar(&sortBy, "sort", []string{"Id"}, "Sort tables by column(s) name(s)")
+
+	// Register resource type commands as hidden top-level shortcuts
+	// so "awless instances" works the same as "awless list instances"
+	for _, sub := range listCmd.Commands() {
+		if sub.Hidden {
+			continue
+		}
+		s := sub
+		topCmd := &cobra.Command{
+			Use:               s.Use,
+			Aliases:           s.Aliases,
+			Short:             s.Short,
+			Hidden:            true,
+			PersistentPreRun:  listCmd.PersistentPreRun,
+			PersistentPostRun: listCmd.PersistentPostRun,
+			Run:               s.Run,
+		}
+		topCmd.PersistentFlags().AddFlagSet(listCmd.PersistentFlags())
+		RootCmd.AddCommand(topCmd)
+	}
 }
 
 var listCmd = &cobra.Command{
@@ -86,8 +106,12 @@ var listCmd = &cobra.Command{
 	Short:             "List resources: sorting, filtering via tag/properties, output formatting, etc...",
 }
 
+var resourceTypeAliases = map[string][]string{
+	cloud.EKSCluster: {"eks"},
+}
+
 var listSpecificResourceCmd = func(resType string) *cobra.Command {
-	return &cobra.Command{
+	cmd := &cobra.Command{
 		Use:   cloud.PluralizeResource(resType),
 		Short: fmt.Sprintf("[%s] List %s %s", awsservices.ServicePerResourceType[resType], strings.ToUpper(awsservices.APIPerResourceType[resType]), cloud.PluralizeResource(resType)),
 
@@ -126,6 +150,10 @@ var listSpecificResourceCmd = func(resType string) *cobra.Command {
 			printResources(g, resType)
 		},
 	}
+	if aliases, ok := resourceTypeAliases[resType]; ok {
+		cmd.Aliases = aliases
+	}
+	return cmd
 }
 
 var listAllResourceInServiceCmd = func(srvName string) *cobra.Command {
