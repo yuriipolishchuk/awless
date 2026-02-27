@@ -1,3 +1,28 @@
+## v0.2.1 [2026-02-27]
+
+### Features
+
+- Support for all new AWS regions added since 2018: `af-south-1`, `ap-east-1`, `ap-south-2`, `ap-southeast-3`, `ap-southeast-4`, `ca-west-1`, `eu-central-2`, `eu-south-1`, `eu-south-2`, `il-central-1`, `me-central-1`, `me-south-1`
+- Updated region validation to support ISO and GovCloud partition formats
+
+## v0.2.0 [2026-02-27]
+
+### Features
+
+- Migrated from `dep` to Go modules (`go.mod`/`go.sum`)
+- Updated Go from 1.9-1.11 to 1.26
+- Updated `aws-sdk-go` from v1.12.55 to v1.55.8
+- Updated all dependencies to latest compatible versions
+- Removed `vendor/` directory, `Gopkg.toml`, `Gopkg.lock`
+- Removed abandoned `awless-scheduler` dependency
+- Renamed module to `github.com/yuriipolishchuk/awless`
+
+### Fixes
+
+- Fix `non-constant format string` vet errors for Go 1.24+
+- Fix deprecated CloudFront `DeleteServiceLinkedRole` API removal in mocks
+- Fix `fmt.Fprintln` redundant newline warning
+
 ## v0.1.11 [2018-06-21]
 
 **Check out our new article** on [Simplified Multi-Factor Authentication](https://medium.com/@awlessCLI/simplified-multi-factor-authentication-for-aws-d703e8d9f332) with `awless`
