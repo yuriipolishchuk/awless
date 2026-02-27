@@ -23,6 +23,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws/awserr"
@@ -72,6 +73,14 @@ func (f *fileCacheProvider) Retrieve() (credentials.Value, error) {
 	}
 	credValue, err := f.creds.Get()
 	if err != nil {
+		// Detect SSO token errors and return a clear message instead of
+		// falling through to the static credentials prompter
+		if isSSOError(err) {
+			return credValue, fmt.Errorf(
+				"AWS SSO session has expired or is invalid for profile '%s'.\nPlease run: aws sso login --profile %s",
+				f.profile, f.profile,
+			)
+		}
 		if batcherr, ok := err.(awserr.BatchedErrors); !ok || batcherr.Code() != "NoCredentialProviders" {
 			if failure, ok := err.(awserr.RequestFailure); ok {
 				f.log.Errorf("%s: %s\n", failure.Code(), failure.Message())
@@ -133,6 +142,17 @@ func (f *folder) putFileContent(filename string, content []byte) error {
 	}
 
 	return ioutil.WriteFile(filepath.Join(f.path, filename), content, 0600)
+}
+
+func isSSOError(err error) bool {
+	if awsErr, ok := err.(awserr.Error); ok {
+		switch awsErr.Code() {
+		case "SSOProviderInvalidToken", "InvalidGrantException":
+			return true
+		}
+	}
+	errMsg := err.Error()
+	return strings.Contains(errMsg, "SSO") && (strings.Contains(errMsg, "expired") || strings.Contains(errMsg, "invalid"))
 }
 
 type credentialsPrompterProvider struct {

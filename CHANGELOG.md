@@ -1,3 +1,10 @@
+## v0.2.2 [2026-02-27]
+
+### Fixes
+
+- Fix AWS SSO credential resolution: environment variables (e.g. from `assume`, `aws sso login`) are now checked first in the credential chain
+- Detect expired/invalid SSO tokens and show a clear message (`aws sso login --profile ...`) instead of prompting for static access keys
+
 ## v0.2.1 [2026-02-27]
 
 ### Features
