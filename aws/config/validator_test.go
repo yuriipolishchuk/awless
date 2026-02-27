@@ -22,11 +22,26 @@ func TestRegionsValid(t *testing.T) {
 	}
 	for _, k := range allRegions() {
 		if got, want := IsValidRegion(k), true; got != want {
-			t.Errorf("got %t, want %t", got, want)
+			t.Errorf("region %s: got %t, want %t", k, got, want)
 		}
 	}
 	if got, want := IsValidRegion("aa-test-10"), false; got != want {
 		t.Errorf("got %t, want %t", got, want)
+	}
+
+	// Verify new regions added after 2018 are present
+	newRegions := []string{
+		"af-south-1", "ap-east-1", "ap-south-2", "ap-southeast-3",
+		"ap-southeast-4", "ca-west-1", "eu-central-2", "eu-south-1",
+		"eu-south-2", "il-central-1", "me-central-1", "me-south-1",
+	}
+	for _, r := range newRegions {
+		if got, want := stringInSlice(r, allRegions()), true; got != want {
+			t.Errorf("new region %s missing: got %t, want %t", r, got, want)
+		}
+		if got, want := IsValidRegion(r), true; got != want {
+			t.Errorf("new region %s invalid: got %t, want %t", r, got, want)
+		}
 	}
 }
 
