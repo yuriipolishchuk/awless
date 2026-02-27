@@ -147,6 +147,7 @@ func (s *sessionResolver) resolve() (*session.Session, error) {
 			&credentials.ChainProvider{
 				VerboseErrors: true,
 				Providers: []credentials.Provider{
+					&credentials.EnvProvider{},
 					&fileCacheProvider{
 						creds:   session.Config.Credentials,
 						profile: s.profile,
