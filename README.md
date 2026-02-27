@@ -23,7 +23,7 @@ For more read our [FAQ](#faq) below (how `awless` compares to other tools, etc.)
 
 Choose one of the following options:
 
-1. Download the latest `awless` binaries (Windows/Linux/macOS) [from Github](https://github.com/yuriipolishchuk/awless/releases/latest)
+1. ~~Download the latest `awless` binaries (Windows/Linux/macOS) [from Github](https://github.com/yuriipolishchuk/awless/releases/latest)~~ No binaries provided, sorry
 2. If you have Golang already installed, install from the source with: `go install github.com/yuriipolishchuk/awless@latest`
 
 If you have previously used the AWS CLI or aws-shell, you don't need to configure anything! Your config will be automatically loaded (i.e. ~/.aws/{credentials,config}) and `awless` will prompt for any missing info (more at our [getting started](https://github.com/wallix/awless/wiki/Getting-Started)).
