@@ -11,6 +11,7 @@ import (
 	awssdk "github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/ecs"
+	"github.com/aws/aws-sdk-go/service/eks"
 	"github.com/aws/aws-sdk-go/service/elbv2"
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/aws/aws-sdk-go/service/route53"
@@ -292,6 +293,41 @@ func addManualInfraFetchFuncs(conf *Config, funcs map[string]fetch.Func) {
 			for _, cluster := range clustersOut.Clusters {
 				objects = append(objects, cluster)
 				res, err := awsconv.NewResource(cluster)
+				if err != nil {
+					return resources, objects, err
+				}
+				resources = append(resources, res)
+			}
+		}
+		return resources, objects, nil
+	}
+
+	funcs["ekscluster"] = func(ctx context.Context, cache fetch.Cache) ([]*graph.Resource, interface{}, error) {
+		var resources []*graph.Resource
+		var objects []*eks.Cluster
+
+		if !conf.getBoolDefaultTrue("aws.infra.ekscluster.sync") && !getBoolFromContext(ctx, "force") {
+			conf.Log.Verbose("sync: *disabled* for resource infra[ekscluster]")
+			return resources, objects, nil
+		}
+
+		var clusterNames []string
+		err := conf.APIs.Eks.ListClustersPages(&eks.ListClustersInput{}, func(out *eks.ListClustersOutput, lastPage bool) bool {
+			clusterNames = append(clusterNames, awssdk.StringValueSlice(out.Clusters)...)
+			return out.NextToken != nil
+		})
+		if err != nil {
+			return resources, objects, err
+		}
+
+		for _, name := range clusterNames {
+			clusterOut, err := conf.APIs.Eks.DescribeCluster(&eks.DescribeClusterInput{Name: awssdk.String(name)})
+			if err != nil {
+				return resources, objects, err
+			}
+			if clusterOut.Cluster != nil {
+				objects = append(objects, clusterOut.Cluster)
+				res, err := awsconv.NewResource(clusterOut.Cluster)
 				if err != nil {
 					return resources, objects, err
 				}

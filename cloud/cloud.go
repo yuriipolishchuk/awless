@@ -95,6 +95,8 @@ const (
 	ContainerTask     string = "containertask"
 	Container         string = "container"
 	ContainerInstance string = "containerinstance"
+	//eks
+	EKSCluster string = "ekscluster"
 	//application autoscaling
 	AppScalingTarget string = "appscalingtarget"
 	AppScalingPolicy string = "appscalingpolicy"

@@ -162,6 +162,13 @@ var mocksDefs = []*mockDef{
 		},
 	},
 	{
+		Api: "eks",
+		Funcs: []*mockFuncDef{
+			{FuncType: "list", AWSType: "eks.Cluster", Manual: true},
+			{FuncType: "list", MockField: "clusterNames", AWSType: "string", ApiMethod: "ListClustersPages", Input: "eks.ListClustersInput", Output: "eks.ListClustersOutput", OutputsExtractor: "Clusters", Multipage: true, NextPageMarker: "NextToken"},
+		},
+	},
+	{
 		Api: "ecs",
 		Funcs: []*mockFuncDef{
 			{FuncType: "list", AWSType: "ecs.Cluster", Manual: true},

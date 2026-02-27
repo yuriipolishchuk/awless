@@ -564,17 +564,19 @@ func TestBuildInfraRdfGraph(t *testing.T) {
 	mockRds := &mockRds{}
 	mockAcm := &mockAcm{certificatesummarys: certificates}
 	mockAutoscaling := &mockAutoscaling{launchconfigurations: launchConfigs, groups: scalingGroups}
+	mockEksApi := &mockEks{}
 	InfraService = &Infra{
 		EC2API:         mock,
 		ECRAPI:         mockEcr,
 		ECSAPI:         mockEcs,
+		EKSAPI:         mockEksApi,
 		ELBAPI:         mockClassicLb,
 		ELBV2API:       mockLb,
 		RDSAPI:         mockRds,
 		ACMAPI:         mockAcm,
 		AutoScalingAPI: mockAutoscaling,
 		region:         "eu-west-1",
-		fetcher:        fetch.NewFetcher(awsfetch.BuildInfraFetchFuncs(awsfetch.NewConfig(mock, mockEcr, mockEcs, mockClassicLb, mockLb, mockRds, mockAutoscaling, mockAcm))),
+		fetcher:        fetch.NewFetcher(awsfetch.BuildInfraFetchFuncs(awsfetch.NewConfig(mock, mockEcr, mockEcs, mockClassicLb, mockLb, mockRds, mockAutoscaling, mockAcm, mockEksApi))),
 	}
 	g, err := InfraService.Fetch(context.Background())
 	if err != nil {
@@ -1342,10 +1344,11 @@ func TestBuildEmptyRdfGraphWhenNoData(t *testing.T) {
 		AutoScalingAPI: &mockAutoscaling{},
 		ECRAPI:         &mockEcr{},
 		ECSAPI:         &mockEcs{},
+		EKSAPI:         &mockEks{},
 		ACMAPI:         &mockAcm{},
 		region:         "eu-west-1",
 		fetcher: fetch.NewFetcher(awsfetch.BuildInfraFetchFuncs(awsfetch.NewConfig(
-			&mockEc2{}, &mockElb{}, &mockElbv2{}, &mockRds{}, &mockEcr{}, &mockEcs{}, &mockAutoscaling{}, &mockAcm{},
+			&mockEc2{}, &mockElb{}, &mockElbv2{}, &mockRds{}, &mockEcr{}, &mockEcs{}, &mockAutoscaling{}, &mockAcm{}, &mockEks{},
 		))),
 	}
 

@@ -38,6 +38,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/aws/aws-sdk-go/service/ecr"
 	"github.com/aws/aws-sdk-go/service/ecs"
+	"github.com/aws/aws-sdk-go/service/eks"
 	"github.com/aws/aws-sdk-go/service/elb"
 	"github.com/aws/aws-sdk-go/service/elbv2"
 	"github.com/aws/aws-sdk-go/service/iam"
@@ -121,6 +122,9 @@ func InitResource(source interface{}) (*graph.Resource, error) {
 		res = graph.InitResource(cloud.Container, awssdk.StringValue(ss.ContainerArn))
 	case *ecs.ContainerInstance:
 		res = graph.InitResource(cloud.ContainerInstance, awssdk.StringValue(ss.ContainerInstanceArn))
+	// EKS
+	case *eks.Cluster:
+		res = graph.InitResource(cloud.EKSCluster, awssdk.StringValue(ss.Name))
 		// ACM
 	case *acm.CertificateSummary:
 		res = graph.InitResource(cloud.Certificate, awssdk.StringValue(ss.CertificateArn))

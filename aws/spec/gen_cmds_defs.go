@@ -188,1003 +188,1003 @@ var APIPerTemplateDefName = map[string]string{
 }
 
 var AWSTemplatesDefinitions = map[string]Definition{
-	"attachalarm": {
+	"attachalarm": Definition{
 		Action: "attach",
 		Entity: "alarm",
 		Api:    "cloudwatch",
 		Params: new(AttachAlarm).ParamsSpec().Rule(),
 	},
-	"attachclassicloadbalancer": {
+	"attachclassicloadbalancer": Definition{
 		Action: "attach",
 		Entity: "classicloadbalancer",
 		Api:    "elb",
 		Params: new(AttachClassicLoadbalancer).ParamsSpec().Rule(),
 	},
-	"attachcontainertask": {
+	"attachcontainertask": Definition{
 		Action: "attach",
 		Entity: "containertask",
 		Api:    "ecs",
 		Params: new(AttachContainertask).ParamsSpec().Rule(),
 	},
-	"attachelasticip": {
+	"attachelasticip": Definition{
 		Action: "attach",
 		Entity: "elasticip",
 		Api:    "ec2",
 		Params: new(AttachElasticip).ParamsSpec().Rule(),
 	},
-	"attachinstance": {
+	"attachinstance": Definition{
 		Action: "attach",
 		Entity: "instance",
 		Api:    "elbv2",
 		Params: new(AttachInstance).ParamsSpec().Rule(),
 	},
-	"attachinstanceprofile": {
+	"attachinstanceprofile": Definition{
 		Action: "attach",
 		Entity: "instanceprofile",
 		Api:    "ec2",
 		Params: new(AttachInstanceprofile).ParamsSpec().Rule(),
 	},
-	"attachinternetgateway": {
+	"attachinternetgateway": Definition{
 		Action: "attach",
 		Entity: "internetgateway",
 		Api:    "ec2",
 		Params: new(AttachInternetgateway).ParamsSpec().Rule(),
 	},
-	"attachlistener": {
+	"attachlistener": Definition{
 		Action: "attach",
 		Entity: "listener",
 		Api:    "elbv2",
 		Params: new(AttachListener).ParamsSpec().Rule(),
 	},
-	"attachmfadevice": {
+	"attachmfadevice": Definition{
 		Action: "attach",
 		Entity: "mfadevice",
 		Api:    "iam",
 		Params: new(AttachMfadevice).ParamsSpec().Rule(),
 	},
-	"attachnetworkinterface": {
+	"attachnetworkinterface": Definition{
 		Action: "attach",
 		Entity: "networkinterface",
 		Api:    "ec2",
 		Params: new(AttachNetworkinterface).ParamsSpec().Rule(),
 	},
-	"attachpolicy": {
+	"attachpolicy": Definition{
 		Action: "attach",
 		Entity: "policy",
 		Api:    "iam",
 		Params: new(AttachPolicy).ParamsSpec().Rule(),
 	},
-	"attachrole": {
+	"attachrole": Definition{
 		Action: "attach",
 		Entity: "role",
 		Api:    "iam",
 		Params: new(AttachRole).ParamsSpec().Rule(),
 	},
-	"attachroutetable": {
+	"attachroutetable": Definition{
 		Action: "attach",
 		Entity: "routetable",
 		Api:    "ec2",
 		Params: new(AttachRoutetable).ParamsSpec().Rule(),
 	},
-	"attachsecuritygroup": {
+	"attachsecuritygroup": Definition{
 		Action: "attach",
 		Entity: "securitygroup",
 		Api:    "ec2",
 		Params: new(AttachSecuritygroup).ParamsSpec().Rule(),
 	},
-	"attachuser": {
+	"attachuser": Definition{
 		Action: "attach",
 		Entity: "user",
 		Api:    "iam",
 		Params: new(AttachUser).ParamsSpec().Rule(),
 	},
-	"attachvolume": {
+	"attachvolume": Definition{
 		Action: "attach",
 		Entity: "volume",
 		Api:    "ec2",
 		Params: new(AttachVolume).ParamsSpec().Rule(),
 	},
-	"authenticateregistry": {
+	"authenticateregistry": Definition{
 		Action: "authenticate",
 		Entity: "registry",
 		Api:    "ecr",
 		Params: new(AuthenticateRegistry).ParamsSpec().Rule(),
 	},
-	"checkcertificate": {
+	"checkcertificate": Definition{
 		Action: "check",
 		Entity: "certificate",
 		Api:    "acm",
 		Params: new(CheckCertificate).ParamsSpec().Rule(),
 	},
-	"checkdatabase": {
+	"checkdatabase": Definition{
 		Action: "check",
 		Entity: "database",
 		Api:    "rds",
 		Params: new(CheckDatabase).ParamsSpec().Rule(),
 	},
-	"checkdistribution": {
+	"checkdistribution": Definition{
 		Action: "check",
 		Entity: "distribution",
 		Api:    "cloudfront",
 		Params: new(CheckDistribution).ParamsSpec().Rule(),
 	},
-	"checkinstance": {
+	"checkinstance": Definition{
 		Action: "check",
 		Entity: "instance",
 		Api:    "ec2",
 		Params: new(CheckInstance).ParamsSpec().Rule(),
 	},
-	"checkloadbalancer": {
+	"checkloadbalancer": Definition{
 		Action: "check",
 		Entity: "loadbalancer",
 		Api:    "elbv2",
 		Params: new(CheckLoadbalancer).ParamsSpec().Rule(),
 	},
-	"checknatgateway": {
+	"checknatgateway": Definition{
 		Action: "check",
 		Entity: "natgateway",
 		Api:    "ec2",
 		Params: new(CheckNatgateway).ParamsSpec().Rule(),
 	},
-	"checknetworkinterface": {
+	"checknetworkinterface": Definition{
 		Action: "check",
 		Entity: "networkinterface",
 		Api:    "ec2",
 		Params: new(CheckNetworkinterface).ParamsSpec().Rule(),
 	},
-	"checkscalinggroup": {
+	"checkscalinggroup": Definition{
 		Action: "check",
 		Entity: "scalinggroup",
 		Api:    "autoscaling",
 		Params: new(CheckScalinggroup).ParamsSpec().Rule(),
 	},
-	"checksecuritygroup": {
+	"checksecuritygroup": Definition{
 		Action: "check",
 		Entity: "securitygroup",
 		Api:    "ec2",
 		Params: new(CheckSecuritygroup).ParamsSpec().Rule(),
 	},
-	"checkvolume": {
+	"checkvolume": Definition{
 		Action: "check",
 		Entity: "volume",
 		Api:    "ec2",
 		Params: new(CheckVolume).ParamsSpec().Rule(),
 	},
-	"copyimage": {
+	"copyimage": Definition{
 		Action: "copy",
 		Entity: "image",
 		Api:    "ec2",
 		Params: new(CopyImage).ParamsSpec().Rule(),
 	},
-	"copysnapshot": {
+	"copysnapshot": Definition{
 		Action: "copy",
 		Entity: "snapshot",
 		Api:    "ec2",
 		Params: new(CopySnapshot).ParamsSpec().Rule(),
 	},
-	"createaccesskey": {
+	"createaccesskey": Definition{
 		Action: "create",
 		Entity: "accesskey",
 		Api:    "iam",
 		Params: new(CreateAccesskey).ParamsSpec().Rule(),
 	},
-	"createalarm": {
+	"createalarm": Definition{
 		Action: "create",
 		Entity: "alarm",
 		Api:    "cloudwatch",
 		Params: new(CreateAlarm).ParamsSpec().Rule(),
 	},
-	"createappscalingpolicy": {
+	"createappscalingpolicy": Definition{
 		Action: "create",
 		Entity: "appscalingpolicy",
 		Api:    "applicationautoscaling",
 		Params: new(CreateAppscalingpolicy).ParamsSpec().Rule(),
 	},
-	"createappscalingtarget": {
+	"createappscalingtarget": Definition{
 		Action: "create",
 		Entity: "appscalingtarget",
 		Api:    "applicationautoscaling",
 		Params: new(CreateAppscalingtarget).ParamsSpec().Rule(),
 	},
-	"createbucket": {
+	"createbucket": Definition{
 		Action: "create",
 		Entity: "bucket",
 		Api:    "s3",
 		Params: new(CreateBucket).ParamsSpec().Rule(),
 	},
-	"createcertificate": {
+	"createcertificate": Definition{
 		Action: "create",
 		Entity: "certificate",
 		Api:    "acm",
 		Params: new(CreateCertificate).ParamsSpec().Rule(),
 	},
-	"createclassicloadbalancer": {
+	"createclassicloadbalancer": Definition{
 		Action: "create",
 		Entity: "classicloadbalancer",
 		Api:    "elb",
 		Params: new(CreateClassicLoadbalancer).ParamsSpec().Rule(),
 	},
-	"createcontainercluster": {
+	"createcontainercluster": Definition{
 		Action: "create",
 		Entity: "containercluster",
 		Api:    "ecs",
 		Params: new(CreateContainercluster).ParamsSpec().Rule(),
 	},
-	"createdatabase": {
+	"createdatabase": Definition{
 		Action: "create",
 		Entity: "database",
 		Api:    "rds",
 		Params: new(CreateDatabase).ParamsSpec().Rule(),
 	},
-	"createdbsubnetgroup": {
+	"createdbsubnetgroup": Definition{
 		Action: "create",
 		Entity: "dbsubnetgroup",
 		Api:    "rds",
 		Params: new(CreateDbsubnetgroup).ParamsSpec().Rule(),
 	},
-	"createdistribution": {
+	"createdistribution": Definition{
 		Action: "create",
 		Entity: "distribution",
 		Api:    "cloudfront",
 		Params: new(CreateDistribution).ParamsSpec().Rule(),
 	},
-	"createelasticip": {
+	"createelasticip": Definition{
 		Action: "create",
 		Entity: "elasticip",
 		Api:    "ec2",
 		Params: new(CreateElasticip).ParamsSpec().Rule(),
 	},
-	"createfunction": {
+	"createfunction": Definition{
 		Action: "create",
 		Entity: "function",
 		Api:    "lambda",
 		Params: new(CreateFunction).ParamsSpec().Rule(),
 	},
-	"creategroup": {
+	"creategroup": Definition{
 		Action: "create",
 		Entity: "group",
 		Api:    "iam",
 		Params: new(CreateGroup).ParamsSpec().Rule(),
 	},
-	"createimage": {
+	"createimage": Definition{
 		Action: "create",
 		Entity: "image",
 		Api:    "ec2",
 		Params: new(CreateImage).ParamsSpec().Rule(),
 	},
-	"createinstance": {
+	"createinstance": Definition{
 		Action: "create",
 		Entity: "instance",
 		Api:    "ec2",
 		Params: new(CreateInstance).ParamsSpec().Rule(),
 	},
-	"createinstanceprofile": {
+	"createinstanceprofile": Definition{
 		Action: "create",
 		Entity: "instanceprofile",
 		Api:    "iam",
 		Params: new(CreateInstanceprofile).ParamsSpec().Rule(),
 	},
-	"createinternetgateway": {
+	"createinternetgateway": Definition{
 		Action: "create",
 		Entity: "internetgateway",
 		Api:    "ec2",
 		Params: new(CreateInternetgateway).ParamsSpec().Rule(),
 	},
-	"createkeypair": {
+	"createkeypair": Definition{
 		Action: "create",
 		Entity: "keypair",
 		Api:    "ec2",
 		Params: new(CreateKeypair).ParamsSpec().Rule(),
 	},
-	"createlaunchconfiguration": {
+	"createlaunchconfiguration": Definition{
 		Action: "create",
 		Entity: "launchconfiguration",
 		Api:    "autoscaling",
 		Params: new(CreateLaunchconfiguration).ParamsSpec().Rule(),
 	},
-	"createlistener": {
+	"createlistener": Definition{
 		Action: "create",
 		Entity: "listener",
 		Api:    "elbv2",
 		Params: new(CreateListener).ParamsSpec().Rule(),
 	},
-	"createloadbalancer": {
+	"createloadbalancer": Definition{
 		Action: "create",
 		Entity: "loadbalancer",
 		Api:    "elbv2",
 		Params: new(CreateLoadbalancer).ParamsSpec().Rule(),
 	},
-	"createloginprofile": {
+	"createloginprofile": Definition{
 		Action: "create",
 		Entity: "loginprofile",
 		Api:    "iam",
 		Params: new(CreateLoginprofile).ParamsSpec().Rule(),
 	},
-	"createmfadevice": {
+	"createmfadevice": Definition{
 		Action: "create",
 		Entity: "mfadevice",
 		Api:    "iam",
 		Params: new(CreateMfadevice).ParamsSpec().Rule(),
 	},
-	"createnatgateway": {
+	"createnatgateway": Definition{
 		Action: "create",
 		Entity: "natgateway",
 		Api:    "ec2",
 		Params: new(CreateNatgateway).ParamsSpec().Rule(),
 	},
-	"createnetworkinterface": {
+	"createnetworkinterface": Definition{
 		Action: "create",
 		Entity: "networkinterface",
 		Api:    "ec2",
 		Params: new(CreateNetworkinterface).ParamsSpec().Rule(),
 	},
-	"createpolicy": {
+	"createpolicy": Definition{
 		Action: "create",
 		Entity: "policy",
 		Api:    "iam",
 		Params: new(CreatePolicy).ParamsSpec().Rule(),
 	},
-	"createqueue": {
+	"createqueue": Definition{
 		Action: "create",
 		Entity: "queue",
 		Api:    "sqs",
 		Params: new(CreateQueue).ParamsSpec().Rule(),
 	},
-	"createrecord": {
+	"createrecord": Definition{
 		Action: "create",
 		Entity: "record",
 		Api:    "route53",
 		Params: new(CreateRecord).ParamsSpec().Rule(),
 	},
-	"createrepository": {
+	"createrepository": Definition{
 		Action: "create",
 		Entity: "repository",
 		Api:    "ecr",
 		Params: new(CreateRepository).ParamsSpec().Rule(),
 	},
-	"createrole": {
+	"createrole": Definition{
 		Action: "create",
 		Entity: "role",
 		Api:    "iam",
 		Params: new(CreateRole).ParamsSpec().Rule(),
 	},
-	"createroute": {
+	"createroute": Definition{
 		Action: "create",
 		Entity: "route",
 		Api:    "ec2",
 		Params: new(CreateRoute).ParamsSpec().Rule(),
 	},
-	"createroutetable": {
+	"createroutetable": Definition{
 		Action: "create",
 		Entity: "routetable",
 		Api:    "ec2",
 		Params: new(CreateRoutetable).ParamsSpec().Rule(),
 	},
-	"creates3object": {
+	"creates3object": Definition{
 		Action: "create",
 		Entity: "s3object",
 		Api:    "s3",
 		Params: new(CreateS3object).ParamsSpec().Rule(),
 	},
-	"createscalinggroup": {
+	"createscalinggroup": Definition{
 		Action: "create",
 		Entity: "scalinggroup",
 		Api:    "autoscaling",
 		Params: new(CreateScalinggroup).ParamsSpec().Rule(),
 	},
-	"createscalingpolicy": {
+	"createscalingpolicy": Definition{
 		Action: "create",
 		Entity: "scalingpolicy",
 		Api:    "autoscaling",
 		Params: new(CreateScalingpolicy).ParamsSpec().Rule(),
 	},
-	"createsecuritygroup": {
+	"createsecuritygroup": Definition{
 		Action: "create",
 		Entity: "securitygroup",
 		Api:    "ec2",
 		Params: new(CreateSecuritygroup).ParamsSpec().Rule(),
 	},
-	"createsnapshot": {
+	"createsnapshot": Definition{
 		Action: "create",
 		Entity: "snapshot",
 		Api:    "ec2",
 		Params: new(CreateSnapshot).ParamsSpec().Rule(),
 	},
-	"createstack": {
+	"createstack": Definition{
 		Action: "create",
 		Entity: "stack",
 		Api:    "cloudformation",
 		Params: new(CreateStack).ParamsSpec().Rule(),
 	},
-	"createsubnet": {
+	"createsubnet": Definition{
 		Action: "create",
 		Entity: "subnet",
 		Api:    "ec2",
 		Params: new(CreateSubnet).ParamsSpec().Rule(),
 	},
-	"createsubscription": {
+	"createsubscription": Definition{
 		Action: "create",
 		Entity: "subscription",
 		Api:    "sns",
 		Params: new(CreateSubscription).ParamsSpec().Rule(),
 	},
-	"createtag": {
+	"createtag": Definition{
 		Action: "create",
 		Entity: "tag",
 		Api:    "ec2",
 		Params: new(CreateTag).ParamsSpec().Rule(),
 	},
-	"createtargetgroup": {
+	"createtargetgroup": Definition{
 		Action: "create",
 		Entity: "targetgroup",
 		Api:    "elbv2",
 		Params: new(CreateTargetgroup).ParamsSpec().Rule(),
 	},
-	"createtopic": {
+	"createtopic": Definition{
 		Action: "create",
 		Entity: "topic",
 		Api:    "sns",
 		Params: new(CreateTopic).ParamsSpec().Rule(),
 	},
-	"createuser": {
+	"createuser": Definition{
 		Action: "create",
 		Entity: "user",
 		Api:    "iam",
 		Params: new(CreateUser).ParamsSpec().Rule(),
 	},
-	"createvolume": {
+	"createvolume": Definition{
 		Action: "create",
 		Entity: "volume",
 		Api:    "ec2",
 		Params: new(CreateVolume).ParamsSpec().Rule(),
 	},
-	"createvpc": {
+	"createvpc": Definition{
 		Action: "create",
 		Entity: "vpc",
 		Api:    "ec2",
 		Params: new(CreateVpc).ParamsSpec().Rule(),
 	},
-	"createzone": {
+	"createzone": Definition{
 		Action: "create",
 		Entity: "zone",
 		Api:    "route53",
 		Params: new(CreateZone).ParamsSpec().Rule(),
 	},
-	"deleteaccesskey": {
+	"deleteaccesskey": Definition{
 		Action: "delete",
 		Entity: "accesskey",
 		Api:    "iam",
 		Params: new(DeleteAccesskey).ParamsSpec().Rule(),
 	},
-	"deletealarm": {
+	"deletealarm": Definition{
 		Action: "delete",
 		Entity: "alarm",
 		Api:    "cloudwatch",
 		Params: new(DeleteAlarm).ParamsSpec().Rule(),
 	},
-	"deleteappscalingpolicy": {
+	"deleteappscalingpolicy": Definition{
 		Action: "delete",
 		Entity: "appscalingpolicy",
 		Api:    "applicationautoscaling",
 		Params: new(DeleteAppscalingpolicy).ParamsSpec().Rule(),
 	},
-	"deleteappscalingtarget": {
+	"deleteappscalingtarget": Definition{
 		Action: "delete",
 		Entity: "appscalingtarget",
 		Api:    "applicationautoscaling",
 		Params: new(DeleteAppscalingtarget).ParamsSpec().Rule(),
 	},
-	"deletebucket": {
+	"deletebucket": Definition{
 		Action: "delete",
 		Entity: "bucket",
 		Api:    "s3",
 		Params: new(DeleteBucket).ParamsSpec().Rule(),
 	},
-	"deletecertificate": {
+	"deletecertificate": Definition{
 		Action: "delete",
 		Entity: "certificate",
 		Api:    "acm",
 		Params: new(DeleteCertificate).ParamsSpec().Rule(),
 	},
-	"deleteclassicloadbalancer": {
+	"deleteclassicloadbalancer": Definition{
 		Action: "delete",
 		Entity: "classicloadbalancer",
 		Api:    "elb",
 		Params: new(DeleteClassicLoadbalancer).ParamsSpec().Rule(),
 	},
-	"deletecontainercluster": {
+	"deletecontainercluster": Definition{
 		Action: "delete",
 		Entity: "containercluster",
 		Api:    "ecs",
 		Params: new(DeleteContainercluster).ParamsSpec().Rule(),
 	},
-	"deletecontainertask": {
+	"deletecontainertask": Definition{
 		Action: "delete",
 		Entity: "containertask",
 		Api:    "ecs",
 		Params: new(DeleteContainertask).ParamsSpec().Rule(),
 	},
-	"deletedatabase": {
+	"deletedatabase": Definition{
 		Action: "delete",
 		Entity: "database",
 		Api:    "rds",
 		Params: new(DeleteDatabase).ParamsSpec().Rule(),
 	},
-	"deletedbsubnetgroup": {
+	"deletedbsubnetgroup": Definition{
 		Action: "delete",
 		Entity: "dbsubnetgroup",
 		Api:    "rds",
 		Params: new(DeleteDbsubnetgroup).ParamsSpec().Rule(),
 	},
-	"deletedistribution": {
+	"deletedistribution": Definition{
 		Action: "delete",
 		Entity: "distribution",
 		Api:    "cloudfront",
 		Params: new(DeleteDistribution).ParamsSpec().Rule(),
 	},
-	"deleteelasticip": {
+	"deleteelasticip": Definition{
 		Action: "delete",
 		Entity: "elasticip",
 		Api:    "ec2",
 		Params: new(DeleteElasticip).ParamsSpec().Rule(),
 	},
-	"deletefunction": {
+	"deletefunction": Definition{
 		Action: "delete",
 		Entity: "function",
 		Api:    "lambda",
 		Params: new(DeleteFunction).ParamsSpec().Rule(),
 	},
-	"deletegroup": {
+	"deletegroup": Definition{
 		Action: "delete",
 		Entity: "group",
 		Api:    "iam",
 		Params: new(DeleteGroup).ParamsSpec().Rule(),
 	},
-	"deleteimage": {
+	"deleteimage": Definition{
 		Action: "delete",
 		Entity: "image",
 		Api:    "ec2",
 		Params: new(DeleteImage).ParamsSpec().Rule(),
 	},
-	"deleteinstance": {
+	"deleteinstance": Definition{
 		Action: "delete",
 		Entity: "instance",
 		Api:    "ec2",
 		Params: new(DeleteInstance).ParamsSpec().Rule(),
 	},
-	"deleteinstanceprofile": {
+	"deleteinstanceprofile": Definition{
 		Action: "delete",
 		Entity: "instanceprofile",
 		Api:    "iam",
 		Params: new(DeleteInstanceprofile).ParamsSpec().Rule(),
 	},
-	"deleteinternetgateway": {
+	"deleteinternetgateway": Definition{
 		Action: "delete",
 		Entity: "internetgateway",
 		Api:    "ec2",
 		Params: new(DeleteInternetgateway).ParamsSpec().Rule(),
 	},
-	"deletekeypair": {
+	"deletekeypair": Definition{
 		Action: "delete",
 		Entity: "keypair",
 		Api:    "ec2",
 		Params: new(DeleteKeypair).ParamsSpec().Rule(),
 	},
-	"deletelaunchconfiguration": {
+	"deletelaunchconfiguration": Definition{
 		Action: "delete",
 		Entity: "launchconfiguration",
 		Api:    "autoscaling",
 		Params: new(DeleteLaunchconfiguration).ParamsSpec().Rule(),
 	},
-	"deletelistener": {
+	"deletelistener": Definition{
 		Action: "delete",
 		Entity: "listener",
 		Api:    "elbv2",
 		Params: new(DeleteListener).ParamsSpec().Rule(),
 	},
-	"deleteloadbalancer": {
+	"deleteloadbalancer": Definition{
 		Action: "delete",
 		Entity: "loadbalancer",
 		Api:    "elbv2",
 		Params: new(DeleteLoadbalancer).ParamsSpec().Rule(),
 	},
-	"deleteloginprofile": {
+	"deleteloginprofile": Definition{
 		Action: "delete",
 		Entity: "loginprofile",
 		Api:    "iam",
 		Params: new(DeleteLoginprofile).ParamsSpec().Rule(),
 	},
-	"deletemfadevice": {
+	"deletemfadevice": Definition{
 		Action: "delete",
 		Entity: "mfadevice",
 		Api:    "iam",
 		Params: new(DeleteMfadevice).ParamsSpec().Rule(),
 	},
-	"deletenatgateway": {
+	"deletenatgateway": Definition{
 		Action: "delete",
 		Entity: "natgateway",
 		Api:    "ec2",
 		Params: new(DeleteNatgateway).ParamsSpec().Rule(),
 	},
-	"deletenetworkinterface": {
+	"deletenetworkinterface": Definition{
 		Action: "delete",
 		Entity: "networkinterface",
 		Api:    "ec2",
 		Params: new(DeleteNetworkinterface).ParamsSpec().Rule(),
 	},
-	"deletepolicy": {
+	"deletepolicy": Definition{
 		Action: "delete",
 		Entity: "policy",
 		Api:    "iam",
 		Params: new(DeletePolicy).ParamsSpec().Rule(),
 	},
-	"deletequeue": {
+	"deletequeue": Definition{
 		Action: "delete",
 		Entity: "queue",
 		Api:    "sqs",
 		Params: new(DeleteQueue).ParamsSpec().Rule(),
 	},
-	"deleterecord": {
+	"deleterecord": Definition{
 		Action: "delete",
 		Entity: "record",
 		Api:    "route53",
 		Params: new(DeleteRecord).ParamsSpec().Rule(),
 	},
-	"deleterepository": {
+	"deleterepository": Definition{
 		Action: "delete",
 		Entity: "repository",
 		Api:    "ecr",
 		Params: new(DeleteRepository).ParamsSpec().Rule(),
 	},
-	"deleterole": {
+	"deleterole": Definition{
 		Action: "delete",
 		Entity: "role",
 		Api:    "iam",
 		Params: new(DeleteRole).ParamsSpec().Rule(),
 	},
-	"deleteroute": {
+	"deleteroute": Definition{
 		Action: "delete",
 		Entity: "route",
 		Api:    "ec2",
 		Params: new(DeleteRoute).ParamsSpec().Rule(),
 	},
-	"deleteroutetable": {
+	"deleteroutetable": Definition{
 		Action: "delete",
 		Entity: "routetable",
 		Api:    "ec2",
 		Params: new(DeleteRoutetable).ParamsSpec().Rule(),
 	},
-	"deletes3object": {
+	"deletes3object": Definition{
 		Action: "delete",
 		Entity: "s3object",
 		Api:    "s3",
 		Params: new(DeleteS3object).ParamsSpec().Rule(),
 	},
-	"deletescalinggroup": {
+	"deletescalinggroup": Definition{
 		Action: "delete",
 		Entity: "scalinggroup",
 		Api:    "autoscaling",
 		Params: new(DeleteScalinggroup).ParamsSpec().Rule(),
 	},
-	"deletescalingpolicy": {
+	"deletescalingpolicy": Definition{
 		Action: "delete",
 		Entity: "scalingpolicy",
 		Api:    "autoscaling",
 		Params: new(DeleteScalingpolicy).ParamsSpec().Rule(),
 	},
-	"deletesecuritygroup": {
+	"deletesecuritygroup": Definition{
 		Action: "delete",
 		Entity: "securitygroup",
 		Api:    "ec2",
 		Params: new(DeleteSecuritygroup).ParamsSpec().Rule(),
 	},
-	"deletesnapshot": {
+	"deletesnapshot": Definition{
 		Action: "delete",
 		Entity: "snapshot",
 		Api:    "ec2",
 		Params: new(DeleteSnapshot).ParamsSpec().Rule(),
 	},
-	"deletestack": {
+	"deletestack": Definition{
 		Action: "delete",
 		Entity: "stack",
 		Api:    "cloudformation",
 		Params: new(DeleteStack).ParamsSpec().Rule(),
 	},
-	"deletesubnet": {
+	"deletesubnet": Definition{
 		Action: "delete",
 		Entity: "subnet",
 		Api:    "ec2",
 		Params: new(DeleteSubnet).ParamsSpec().Rule(),
 	},
-	"deletesubscription": {
+	"deletesubscription": Definition{
 		Action: "delete",
 		Entity: "subscription",
 		Api:    "sns",
 		Params: new(DeleteSubscription).ParamsSpec().Rule(),
 	},
-	"deletetag": {
+	"deletetag": Definition{
 		Action: "delete",
 		Entity: "tag",
 		Api:    "ec2",
 		Params: new(DeleteTag).ParamsSpec().Rule(),
 	},
-	"deletetargetgroup": {
+	"deletetargetgroup": Definition{
 		Action: "delete",
 		Entity: "targetgroup",
 		Api:    "elbv2",
 		Params: new(DeleteTargetgroup).ParamsSpec().Rule(),
 	},
-	"deletetopic": {
+	"deletetopic": Definition{
 		Action: "delete",
 		Entity: "topic",
 		Api:    "sns",
 		Params: new(DeleteTopic).ParamsSpec().Rule(),
 	},
-	"deleteuser": {
+	"deleteuser": Definition{
 		Action: "delete",
 		Entity: "user",
 		Api:    "iam",
 		Params: new(DeleteUser).ParamsSpec().Rule(),
 	},
-	"deletevolume": {
+	"deletevolume": Definition{
 		Action: "delete",
 		Entity: "volume",
 		Api:    "ec2",
 		Params: new(DeleteVolume).ParamsSpec().Rule(),
 	},
-	"deletevpc": {
+	"deletevpc": Definition{
 		Action: "delete",
 		Entity: "vpc",
 		Api:    "ec2",
 		Params: new(DeleteVpc).ParamsSpec().Rule(),
 	},
-	"deletezone": {
+	"deletezone": Definition{
 		Action: "delete",
 		Entity: "zone",
 		Api:    "route53",
 		Params: new(DeleteZone).ParamsSpec().Rule(),
 	},
-	"detachalarm": {
+	"detachalarm": Definition{
 		Action: "detach",
 		Entity: "alarm",
 		Api:    "cloudwatch",
 		Params: new(DetachAlarm).ParamsSpec().Rule(),
 	},
-	"detachclassicloadbalancer": {
+	"detachclassicloadbalancer": Definition{
 		Action: "detach",
 		Entity: "classicloadbalancer",
 		Api:    "elb",
 		Params: new(DetachClassicLoadbalancer).ParamsSpec().Rule(),
 	},
-	"detachcontainertask": {
+	"detachcontainertask": Definition{
 		Action: "detach",
 		Entity: "containertask",
 		Api:    "ecs",
 		Params: new(DetachContainertask).ParamsSpec().Rule(),
 	},
-	"detachelasticip": {
+	"detachelasticip": Definition{
 		Action: "detach",
 		Entity: "elasticip",
 		Api:    "ec2",
 		Params: new(DetachElasticip).ParamsSpec().Rule(),
 	},
-	"detachinstance": {
+	"detachinstance": Definition{
 		Action: "detach",
 		Entity: "instance",
 		Api:    "elbv2",
 		Params: new(DetachInstance).ParamsSpec().Rule(),
 	},
-	"detachinstanceprofile": {
+	"detachinstanceprofile": Definition{
 		Action: "detach",
 		Entity: "instanceprofile",
 		Api:    "ec2",
 		Params: new(DetachInstanceprofile).ParamsSpec().Rule(),
 	},
-	"detachinternetgateway": {
+	"detachinternetgateway": Definition{
 		Action: "detach",
 		Entity: "internetgateway",
 		Api:    "ec2",
 		Params: new(DetachInternetgateway).ParamsSpec().Rule(),
 	},
-	"detachmfadevice": {
+	"detachmfadevice": Definition{
 		Action: "detach",
 		Entity: "mfadevice",
 		Api:    "iam",
 		Params: new(DetachMfadevice).ParamsSpec().Rule(),
 	},
-	"detachnetworkinterface": {
+	"detachnetworkinterface": Definition{
 		Action: "detach",
 		Entity: "networkinterface",
 		Api:    "ec2",
 		Params: new(DetachNetworkinterface).ParamsSpec().Rule(),
 	},
-	"detachpolicy": {
+	"detachpolicy": Definition{
 		Action: "detach",
 		Entity: "policy",
 		Api:    "iam",
 		Params: new(DetachPolicy).ParamsSpec().Rule(),
 	},
-	"detachrole": {
+	"detachrole": Definition{
 		Action: "detach",
 		Entity: "role",
 		Api:    "iam",
 		Params: new(DetachRole).ParamsSpec().Rule(),
 	},
-	"detachroutetable": {
+	"detachroutetable": Definition{
 		Action: "detach",
 		Entity: "routetable",
 		Api:    "ec2",
 		Params: new(DetachRoutetable).ParamsSpec().Rule(),
 	},
-	"detachsecuritygroup": {
+	"detachsecuritygroup": Definition{
 		Action: "detach",
 		Entity: "securitygroup",
 		Api:    "ec2",
 		Params: new(DetachSecuritygroup).ParamsSpec().Rule(),
 	},
-	"detachuser": {
+	"detachuser": Definition{
 		Action: "detach",
 		Entity: "user",
 		Api:    "iam",
 		Params: new(DetachUser).ParamsSpec().Rule(),
 	},
-	"detachvolume": {
+	"detachvolume": Definition{
 		Action: "detach",
 		Entity: "volume",
 		Api:    "ec2",
 		Params: new(DetachVolume).ParamsSpec().Rule(),
 	},
-	"importimage": {
+	"importimage": Definition{
 		Action: "import",
 		Entity: "image",
 		Api:    "ec2",
 		Params: new(ImportImage).ParamsSpec().Rule(),
 	},
-	"restartdatabase": {
+	"restartdatabase": Definition{
 		Action: "restart",
 		Entity: "database",
 		Api:    "rds",
 		Params: new(RestartDatabase).ParamsSpec().Rule(),
 	},
-	"restartinstance": {
+	"restartinstance": Definition{
 		Action: "restart",
 		Entity: "instance",
 		Api:    "ec2",
 		Params: new(RestartInstance).ParamsSpec().Rule(),
 	},
-	"startalarm": {
+	"startalarm": Definition{
 		Action: "start",
 		Entity: "alarm",
 		Api:    "cloudwatch",
 		Params: new(StartAlarm).ParamsSpec().Rule(),
 	},
-	"startcontainertask": {
+	"startcontainertask": Definition{
 		Action: "start",
 		Entity: "containertask",
 		Api:    "ecs",
 		Params: new(StartContainertask).ParamsSpec().Rule(),
 	},
-	"startdatabase": {
+	"startdatabase": Definition{
 		Action: "start",
 		Entity: "database",
 		Api:    "rds",
 		Params: new(StartDatabase).ParamsSpec().Rule(),
 	},
-	"startinstance": {
+	"startinstance": Definition{
 		Action: "start",
 		Entity: "instance",
 		Api:    "ec2",
 		Params: new(StartInstance).ParamsSpec().Rule(),
 	},
-	"stopalarm": {
+	"stopalarm": Definition{
 		Action: "stop",
 		Entity: "alarm",
 		Api:    "cloudwatch",
 		Params: new(StopAlarm).ParamsSpec().Rule(),
 	},
-	"stopcontainertask": {
+	"stopcontainertask": Definition{
 		Action: "stop",
 		Entity: "containertask",
 		Api:    "ecs",
 		Params: new(StopContainertask).ParamsSpec().Rule(),
 	},
-	"stopdatabase": {
+	"stopdatabase": Definition{
 		Action: "stop",
 		Entity: "database",
 		Api:    "rds",
 		Params: new(StopDatabase).ParamsSpec().Rule(),
 	},
-	"stopinstance": {
+	"stopinstance": Definition{
 		Action: "stop",
 		Entity: "instance",
 		Api:    "ec2",
 		Params: new(StopInstance).ParamsSpec().Rule(),
 	},
-	"updatebucket": {
+	"updatebucket": Definition{
 		Action: "update",
 		Entity: "bucket",
 		Api:    "s3",
 		Params: new(UpdateBucket).ParamsSpec().Rule(),
 	},
-	"updateclassicloadbalancer": {
+	"updateclassicloadbalancer": Definition{
 		Action: "update",
 		Entity: "classicloadbalancer",
 		Api:    "elb",
 		Params: new(UpdateClassicLoadbalancer).ParamsSpec().Rule(),
 	},
-	"updatecontainertask": {
+	"updatecontainertask": Definition{
 		Action: "update",
 		Entity: "containertask",
 		Api:    "ecs",
 		Params: new(UpdateContainertask).ParamsSpec().Rule(),
 	},
-	"updatedistribution": {
+	"updatedistribution": Definition{
 		Action: "update",
 		Entity: "distribution",
 		Api:    "cloudfront",
 		Params: new(UpdateDistribution).ParamsSpec().Rule(),
 	},
-	"updateimage": {
+	"updateimage": Definition{
 		Action: "update",
 		Entity: "image",
 		Api:    "ec2",
 		Params: new(UpdateImage).ParamsSpec().Rule(),
 	},
-	"updateinstance": {
+	"updateinstance": Definition{
 		Action: "update",
 		Entity: "instance",
 		Api:    "ec2",
 		Params: new(UpdateInstance).ParamsSpec().Rule(),
 	},
-	"updateloginprofile": {
+	"updateloginprofile": Definition{
 		Action: "update",
 		Entity: "loginprofile",
 		Api:    "iam",
 		Params: new(UpdateLoginprofile).ParamsSpec().Rule(),
 	},
-	"updatepolicy": {
+	"updatepolicy": Definition{
 		Action: "update",
 		Entity: "policy",
 		Api:    "iam",
 		Params: new(UpdatePolicy).ParamsSpec().Rule(),
 	},
-	"updaterecord": {
+	"updaterecord": Definition{
 		Action: "update",
 		Entity: "record",
 		Api:    "route53",
 		Params: new(UpdateRecord).ParamsSpec().Rule(),
 	},
-	"updates3object": {
+	"updates3object": Definition{
 		Action: "update",
 		Entity: "s3object",
 		Api:    "s3",
 		Params: new(UpdateS3object).ParamsSpec().Rule(),
 	},
-	"updatescalinggroup": {
+	"updatescalinggroup": Definition{
 		Action: "update",
 		Entity: "scalinggroup",
 		Api:    "autoscaling",
 		Params: new(UpdateScalinggroup).ParamsSpec().Rule(),
 	},
-	"updatesecuritygroup": {
+	"updatesecuritygroup": Definition{
 		Action: "update",
 		Entity: "securitygroup",
 		Api:    "ec2",
 		Params: new(UpdateSecuritygroup).ParamsSpec().Rule(),
 	},
-	"updatestack": {
+	"updatestack": Definition{
 		Action: "update",
 		Entity: "stack",
 		Api:    "cloudformation",
 		Params: new(UpdateStack).ParamsSpec().Rule(),
 	},
-	"updatesubnet": {
+	"updatesubnet": Definition{
 		Action: "update",
 		Entity: "subnet",
 		Api:    "ec2",
 		Params: new(UpdateSubnet).ParamsSpec().Rule(),
 	},
-	"updatetargetgroup": {
+	"updatetargetgroup": Definition{
 		Action: "update",
 		Entity: "targetgroup",
 		Api:    "elbv2",
@@ -1193,16 +1193,16 @@ var AWSTemplatesDefinitions = map[string]Definition{
 }
 
 var DriverSupportedActions = map[string][]string{
-	"attach":       {"alarm", "classicloadbalancer", "containertask", "elasticip", "instance", "instanceprofile", "internetgateway", "listener", "mfadevice", "networkinterface", "policy", "role", "routetable", "securitygroup", "user", "volume"},
-	"authenticate": {"registry"},
-	"check":        {"certificate", "database", "distribution", "instance", "loadbalancer", "natgateway", "networkinterface", "scalinggroup", "securitygroup", "volume"},
-	"copy":         {"image", "snapshot"},
-	"create":       {"accesskey", "alarm", "appscalingpolicy", "appscalingtarget", "bucket", "certificate", "classicloadbalancer", "containercluster", "database", "dbsubnetgroup", "distribution", "elasticip", "function", "group", "image", "instance", "instanceprofile", "internetgateway", "keypair", "launchconfiguration", "listener", "loadbalancer", "loginprofile", "mfadevice", "natgateway", "networkinterface", "policy", "queue", "record", "repository", "role", "route", "routetable", "s3object", "scalinggroup", "scalingpolicy", "securitygroup", "snapshot", "stack", "subnet", "subscription", "tag", "targetgroup", "topic", "user", "volume", "vpc", "zone"},
-	"delete":       {"accesskey", "alarm", "appscalingpolicy", "appscalingtarget", "bucket", "certificate", "classicloadbalancer", "containercluster", "containertask", "database", "dbsubnetgroup", "distribution", "elasticip", "function", "group", "image", "instance", "instanceprofile", "internetgateway", "keypair", "launchconfiguration", "listener", "loadbalancer", "loginprofile", "mfadevice", "natgateway", "networkinterface", "policy", "queue", "record", "repository", "role", "route", "routetable", "s3object", "scalinggroup", "scalingpolicy", "securitygroup", "snapshot", "stack", "subnet", "subscription", "tag", "targetgroup", "topic", "user", "volume", "vpc", "zone"},
-	"detach":       {"alarm", "classicloadbalancer", "containertask", "elasticip", "instance", "instanceprofile", "internetgateway", "mfadevice", "networkinterface", "policy", "role", "routetable", "securitygroup", "user", "volume"},
-	"import":       {"image"},
-	"restart":      {"database", "instance"},
-	"start":        {"alarm", "containertask", "database", "instance"},
-	"stop":         {"alarm", "containertask", "database", "instance"},
-	"update":       {"bucket", "classicloadbalancer", "containertask", "distribution", "image", "instance", "loginprofile", "policy", "record", "s3object", "scalinggroup", "securitygroup", "stack", "subnet", "targetgroup"},
+	"attach":       []string{"alarm", "classicloadbalancer", "containertask", "elasticip", "instance", "instanceprofile", "internetgateway", "listener", "mfadevice", "networkinterface", "policy", "role", "routetable", "securitygroup", "user", "volume"},
+	"authenticate": []string{"registry"},
+	"check":        []string{"certificate", "database", "distribution", "instance", "loadbalancer", "natgateway", "networkinterface", "scalinggroup", "securitygroup", "volume"},
+	"copy":         []string{"image", "snapshot"},
+	"create":       []string{"accesskey", "alarm", "appscalingpolicy", "appscalingtarget", "bucket", "certificate", "classicloadbalancer", "containercluster", "database", "dbsubnetgroup", "distribution", "elasticip", "function", "group", "image", "instance", "instanceprofile", "internetgateway", "keypair", "launchconfiguration", "listener", "loadbalancer", "loginprofile", "mfadevice", "natgateway", "networkinterface", "policy", "queue", "record", "repository", "role", "route", "routetable", "s3object", "scalinggroup", "scalingpolicy", "securitygroup", "snapshot", "stack", "subnet", "subscription", "tag", "targetgroup", "topic", "user", "volume", "vpc", "zone"},
+	"delete":       []string{"accesskey", "alarm", "appscalingpolicy", "appscalingtarget", "bucket", "certificate", "classicloadbalancer", "containercluster", "containertask", "database", "dbsubnetgroup", "distribution", "elasticip", "function", "group", "image", "instance", "instanceprofile", "internetgateway", "keypair", "launchconfiguration", "listener", "loadbalancer", "loginprofile", "mfadevice", "natgateway", "networkinterface", "policy", "queue", "record", "repository", "role", "route", "routetable", "s3object", "scalinggroup", "scalingpolicy", "securitygroup", "snapshot", "stack", "subnet", "subscription", "tag", "targetgroup", "topic", "user", "volume", "vpc", "zone"},
+	"detach":       []string{"alarm", "classicloadbalancer", "containertask", "elasticip", "instance", "instanceprofile", "internetgateway", "mfadevice", "networkinterface", "policy", "role", "routetable", "securitygroup", "user", "volume"},
+	"import":       []string{"image"},
+	"restart":      []string{"database", "instance"},
+	"start":        []string{"alarm", "containertask", "database", "instance"},
+	"stop":         []string{"alarm", "containertask", "database", "instance"},
+	"update":       []string{"bucket", "classicloadbalancer", "containertask", "distribution", "image", "instance", "loginprofile", "policy", "record", "s3object", "scalinggroup", "securitygroup", "stack", "subnet", "targetgroup"},
 }

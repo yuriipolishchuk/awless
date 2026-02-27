@@ -38,7 +38,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/rds"
 	"github.com/aws/aws-sdk-go/service/route53"
 	"github.com/aws/aws-sdk-go/service/sns"
-	"github.com/yuriipolishchuk/awless/aws/conv"
+	awsconv "github.com/yuriipolishchuk/awless/aws/conv"
 	"github.com/yuriipolishchuk/awless/fetch"
 	"github.com/yuriipolishchuk/awless/graph"
 )

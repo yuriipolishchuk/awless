@@ -59,8 +59,8 @@ func main() {
 
 	// commands
 	generateCommands()
-	generateAcceptanceMocks()
-	generateAcceptanceFactory()
+	//generateAcceptanceMocks() // Skipped: vendor directory removed
+	//generateAcceptanceFactory() // Skipped: vendor directory removed
 
 	// properties
 	generateProperties()

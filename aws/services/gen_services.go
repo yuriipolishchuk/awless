@@ -46,6 +46,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/ecr/ecriface"
 	"github.com/aws/aws-sdk-go/service/ecs"
 	"github.com/aws/aws-sdk-go/service/ecs/ecsiface"
+	"github.com/aws/aws-sdk-go/service/eks"
+	"github.com/aws/aws-sdk-go/service/eks/eksiface"
 	"github.com/aws/aws-sdk-go/service/elb"
 	"github.com/aws/aws-sdk-go/service/elb/elbiface"
 	"github.com/aws/aws-sdk-go/service/elbv2"
@@ -66,12 +68,12 @@ import (
 	"github.com/aws/aws-sdk-go/service/sqs/sqsiface"
 	"github.com/aws/aws-sdk-go/service/sts"
 	"github.com/aws/aws-sdk-go/service/sts/stsiface"
-	"github.com/yuriipolishchuk/awless/aws/fetch"
+	tstore "github.com/wallix/triplestore"
+	awsfetch "github.com/yuriipolishchuk/awless/aws/fetch"
 	"github.com/yuriipolishchuk/awless/cloud"
 	"github.com/yuriipolishchuk/awless/fetch"
 	"github.com/yuriipolishchuk/awless/graph"
 	"github.com/yuriipolishchuk/awless/logger"
-	tstore "github.com/wallix/triplestore"
 )
 
 const accessDenied = "Access Denied"
@@ -119,6 +121,7 @@ var ResourceTypes = []string{
 	"container",
 	"containerinstance",
 	"certificate",
+	"ekscluster",
 	"user",
 	"group",
 	"role",
@@ -141,25 +144,26 @@ var ResourceTypes = []string{
 }
 
 var ServicePerAPI = map[string]string{
-	"ec2":         "infra",
-	"elbv2":       "infra",
-	"elb":         "infra",
-	"rds":         "infra",
-	"autoscaling": "infra",
-	"ecr":         "infra",
-	"ecs":         "infra",
+	"ec2":                    "infra",
+	"elbv2":                  "infra",
+	"elb":                    "infra",
+	"rds":                    "infra",
+	"autoscaling":            "infra",
+	"ecr":                    "infra",
+	"ecs":                    "infra",
 	"applicationautoscaling": "infra",
-	"acm":            "infra",
-	"iam":            "access",
-	"sts":            "access",
-	"s3":             "storage",
-	"sns":            "messaging",
-	"sqs":            "messaging",
-	"route53":        "dns",
-	"lambda":         "lambda",
-	"cloudwatch":     "monitoring",
-	"cloudfront":     "cdn",
-	"cloudformation": "cloudformation",
+	"acm":                    "infra",
+	"eks":                    "infra",
+	"iam":                    "access",
+	"sts":                    "access",
+	"s3":                     "storage",
+	"sns":                    "messaging",
+	"sqs":                    "messaging",
+	"route53":                "dns",
+	"lambda":                 "lambda",
+	"cloudwatch":             "monitoring",
+	"cloudfront":             "cdn",
+	"cloudformation":         "cloudformation",
 }
 
 var ServicePerResourceType = map[string]string{
@@ -193,6 +197,7 @@ var ServicePerResourceType = map[string]string{
 	"container":           "infra",
 	"containerinstance":   "infra",
 	"certificate":         "infra",
+	"ekscluster":          "infra",
 	"user":                "access",
 	"group":               "access",
 	"role":                "access",
@@ -245,6 +250,7 @@ var APIPerResourceType = map[string]string{
 	"container":           "ecs",
 	"containerinstance":   "ecs",
 	"certificate":         "acm",
+	"ekscluster":          "eks",
 	"user":                "iam",
 	"group":               "iam",
 	"role":                "iam",
@@ -280,6 +286,7 @@ type Infra struct {
 	ecsiface.ECSAPI
 	applicationautoscalingiface.ApplicationAutoScalingAPI
 	acmiface.ACMAPI
+	eksiface.EKSAPI
 }
 
 func NewInfra(sess *session.Session, profile string, extraConf map[string]interface{}, log *logger.Logger) cloud.Service {
@@ -293,6 +300,7 @@ func NewInfra(sess *session.Session, profile string, extraConf map[string]interf
 	ecsAPI := ecs.New(sess)
 	applicationautoscalingAPI := applicationautoscaling.New(sess)
 	acmAPI := acm.New(sess)
+	eksAPI := eks.New(sess)
 
 	fetchConfig := awsfetch.NewConfig(
 		ec2API,
@@ -304,25 +312,27 @@ func NewInfra(sess *session.Session, profile string, extraConf map[string]interf
 		ecsAPI,
 		applicationautoscalingAPI,
 		acmAPI,
+		eksAPI,
 	)
 	fetchConfig.Extra = extraConf
 	fetchConfig.Log = log
 
 	return &Infra{
-		EC2API:         ec2API,
-		ELBV2API:       elbv2API,
-		ELBAPI:         elbAPI,
-		RDSAPI:         rdsAPI,
-		AutoScalingAPI: autoscalingAPI,
-		ECRAPI:         ecrAPI,
-		ECSAPI:         ecsAPI,
+		EC2API:                    ec2API,
+		ELBV2API:                  elbv2API,
+		ELBAPI:                    elbAPI,
+		RDSAPI:                    rdsAPI,
+		AutoScalingAPI:            autoscalingAPI,
+		ECRAPI:                    ecrAPI,
+		ECSAPI:                    ecsAPI,
 		ApplicationAutoScalingAPI: applicationautoscalingAPI,
-		ACMAPI:  acmAPI,
-		fetcher: fetch.NewFetcher(awsfetch.BuildInfraFetchFuncs(fetchConfig)),
-		config:  extraConf,
-		region:  region,
-		profile: profile,
-		log:     log,
+		ACMAPI:                    acmAPI,
+		EKSAPI:                    eksAPI,
+		fetcher:                   fetch.NewFetcher(awsfetch.BuildInfraFetchFuncs(fetchConfig)),
+		config:                    extraConf,
+		region:                    region,
+		profile:                   profile,
+		log:                       log,
 	}
 }
 
@@ -370,6 +380,7 @@ func (s *Infra) ResourceTypes() []string {
 		"container",
 		"containerinstance",
 		"certificate",
+		"ekscluster",
 	}
 }
 
@@ -1057,6 +1068,28 @@ func (s *Infra) Fetch(ctx context.Context) (cloud.GraphAPI, error) {
 			for _, fn := range addParentsFns["certificate"] {
 				wg.Add(1)
 				go func(f addParentFn, snap tstore.RDFGraph, region string, res *acm.CertificateSummary) {
+					defer wg.Done()
+					err := f(gph, snap, region, res)
+					if err != nil {
+						errc <- err
+						return
+					}
+				}(fn, snap, s.region, r)
+			}
+		}
+	}
+	if getBool(s.config, "aws.infra.ekscluster.sync", true) {
+		list, err := s.fetcher.Get("ekscluster_objects")
+		if err != nil {
+			return gph, err
+		}
+		if _, ok := list.([]*eks.Cluster); !ok {
+			return gph, errors.New("cannot cast to '[]*eks.Cluster' type from fetch context")
+		}
+		for _, r := range list.([]*eks.Cluster) {
+			for _, fn := range addParentsFns["ekscluster"] {
+				wg.Add(1)
+				go func(f addParentFn, snap tstore.RDFGraph, region string, res *eks.Cluster) {
 					defer wg.Done()
 					err := f(gph, snap, region, res)
 					if err != nil {

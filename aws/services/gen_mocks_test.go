@@ -39,6 +39,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/ecr/ecriface"
 	"github.com/aws/aws-sdk-go/service/ecs"
 	"github.com/aws/aws-sdk-go/service/ecs/ecsiface"
+	"github.com/aws/aws-sdk-go/service/eks"
+	"github.com/aws/aws-sdk-go/service/eks/eksiface"
 	"github.com/aws/aws-sdk-go/service/elb"
 	"github.com/aws/aws-sdk-go/service/elb/elbiface"
 	"github.com/aws/aws-sdk-go/service/elbv2"
@@ -1159,6 +1161,65 @@ func (m *mockEcr) DescribeRepositoriesPages(input *ecr.DescribeRepositoriesInput
 	}
 	for i, page := range pages {
 		fn(&ecr.DescribeRepositoriesOutput{Repositories: page, NextToken: aws.String(strconv.Itoa(i + 1))},
+			i < len(pages),
+		)
+	}
+	return nil
+}
+
+type mockEks struct {
+	eksiface.EKSAPI
+	clusters     []*eks.Cluster
+	clusterNames []*string
+}
+
+func (m *mockEks) Name() string {
+	return ""
+}
+
+func (m *mockEks) Region() string {
+	return ""
+}
+
+func (m *mockEks) Profile() string {
+	return ""
+}
+
+func (m *mockEks) Provider() string {
+	return ""
+}
+
+func (m *mockEks) ProviderAPI() string {
+	return ""
+}
+
+func (m *mockEks) ResourceTypes() []string {
+	return []string{}
+}
+
+func (m *mockEks) Fetch(context.Context) (cloud.GraphAPI, error) {
+	return nil, nil
+}
+
+func (m *mockEks) IsSyncDisabled() bool {
+	return false
+}
+
+func (m *mockEks) FetchByType(context.Context, string) (cloud.GraphAPI, error) {
+	return nil, nil
+}
+
+func (m *mockEks) ListClustersPages(input *eks.ListClustersInput, fn func(p *eks.ListClustersOutput, lastPage bool) (shouldContinue bool)) error {
+	var pages [][]*string
+	for i := 0; i < len(m.clusterNames); i += 2 {
+		page := []*string{m.clusterNames[i]}
+		if i+1 < len(m.clusterNames) {
+			page = append(page, m.clusterNames[i+1])
+		}
+		pages = append(pages, page)
+	}
+	for i, page := range pages {
+		fn(&eks.ListClustersOutput{Clusters: page, NextToken: aws.String(strconv.Itoa(i + 1))},
 			i < len(pages),
 		)
 	}

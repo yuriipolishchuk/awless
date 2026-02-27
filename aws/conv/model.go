@@ -17,8 +17,14 @@ limitations under the License.
 
 package awsconv
 
-import "github.com/yuriipolishchuk/awless/cloud"
-import "github.com/yuriipolishchuk/awless/cloud/properties"
+import (
+	"fmt"
+
+	awssdk "github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/eks"
+	"github.com/yuriipolishchuk/awless/cloud"
+	"github.com/yuriipolishchuk/awless/cloud/properties"
+)
 
 var awsResourcesDef = map[string]map[string]*propertyTransform{
 	//EC2
@@ -367,6 +373,21 @@ var awsResourcesDef = map[string]map[string]*propertyTransform{
 		properties.AgentVersion:      {name: "VersionInfo", transform: extractFieldFn("AgentVersion")},
 		properties.DockerVersion:     {name: "VersionInfo", transform: extractFieldFn("DockerVersion")},
 	},
+	// EKS
+	cloud.EKSCluster: {
+		properties.Name:            {name: "Name", transform: extractValueFn},
+		properties.Arn:             {name: "Arn", transform: extractValueFn},
+		properties.Created:         {name: "CreatedAt", transform: extractTimeFn},
+		properties.State:           {name: "Status", transform: extractValueFn},
+		properties.Version:         {name: "Version", transform: extractValueFn},
+		properties.PlatformVersion: {name: "PlatformVersion", transform: extractValueFn},
+		properties.Role:            {name: "RoleArn", transform: extractValueFn},
+		properties.Endpoint:        {name: "Endpoint", transform: extractValueFn},
+		properties.Vpc:             {fetch: fetchEKSVpcID},
+		properties.Subnets:         {fetch: fetchEKSSubnets},
+		properties.SecurityGroups:  {fetch: fetchEKSSecurityGroups},
+		properties.Tags:            {fetch: fetchEKSTags},
+	},
 	//ACM
 	cloud.Certificate: {
 		properties.Arn:  {name: "CertificateArn", transform: extractValueFn},
@@ -532,4 +553,49 @@ var awsResourcesDef = map[string]map[string]*propertyTransform{
 	},
 	//Queue
 	cloud.Queue: {}, //Manually set
+}
+
+var fetchEKSVpcID = func(i interface{}) (interface{}, error) {
+	cluster, ok := i.(*eks.Cluster)
+	if !ok {
+		return nil, fmt.Errorf("expected *eks.Cluster, got %T", i)
+	}
+	if cluster.ResourcesVpcConfig != nil {
+		return awssdk.StringValue(cluster.ResourcesVpcConfig.VpcId), nil
+	}
+	return "", nil
+}
+
+var fetchEKSSubnets = func(i interface{}) (interface{}, error) {
+	cluster, ok := i.(*eks.Cluster)
+	if !ok {
+		return nil, fmt.Errorf("expected *eks.Cluster, got %T", i)
+	}
+	if cluster.ResourcesVpcConfig != nil {
+		return awssdk.StringValueSlice(cluster.ResourcesVpcConfig.SubnetIds), nil
+	}
+	return []string{}, nil
+}
+
+var fetchEKSSecurityGroups = func(i interface{}) (interface{}, error) {
+	cluster, ok := i.(*eks.Cluster)
+	if !ok {
+		return nil, fmt.Errorf("expected *eks.Cluster, got %T", i)
+	}
+	if cluster.ResourcesVpcConfig != nil {
+		return awssdk.StringValueSlice(cluster.ResourcesVpcConfig.SecurityGroupIds), nil
+	}
+	return []string{}, nil
+}
+
+var fetchEKSTags = func(i interface{}) (interface{}, error) {
+	cluster, ok := i.(*eks.Cluster)
+	if !ok {
+		return nil, fmt.Errorf("expected *eks.Cluster, got %T", i)
+	}
+	var tags []string
+	for k, v := range cluster.Tags {
+		tags = append(tags, fmt.Sprintf("%s=%s", k, awssdk.StringValue(v)))
+	}
+	return tags, nil
 }

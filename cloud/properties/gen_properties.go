@@ -159,6 +159,7 @@ const (
 	PathPrefix                        = "PathPrefix"
 	PendingTasksCount                 = "PendingTasksCount"
 	PlacementGroup                    = "PlacementGroup"
+	PlatformVersion                   = "PlatformVersion"
 	Port                              = "Port"
 	Ports                             = "Ports"
 	PortRange                         = "PortRange"
